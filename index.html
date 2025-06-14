@@ -35,24 +35,37 @@
       margin: 0 auto;
       padding: 2em 1em;
     }
-    .update {
+    details {
       background-color: #122e55;
-      padding: 1.5em;
       border-radius: 12px;
-      margin-bottom: 2em;
+      padding: 1.2em;
+      margin-bottom: 1.5em;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
-    .update img {
-      width: 100%;
-      border-radius: 8px;
-      margin-top: 1em;
+    summary {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #ffd700;
+      cursor: pointer;
     }
-    .update h2 {
-      margin-top: 0;
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::before {
+      content: '▶ ';
       color: #ffd700;
     }
-    .update p {
+    details[open] summary::before {
+      content: '▼ ';
+    }
+    .update-img {
+      margin-top: 1em;
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    p {
       line-height: 1.6;
+      margin-top: 1em;
     }
     footer {
       text-align: center;
@@ -70,23 +83,26 @@
 
   <div class="container">
     <!-- Week 1 Update -->
-    <div class="update">
-      <h2>Week 1 – First Wash & Inspection</h2>
-      <p>Started the journey with a full wash and initial inspection.</p>
-      <img src="week1.jpg" alt="First wash and inspection">
-    </div>
+    <details>
+      <summary>Week 1 – First Wash & Inspection</summary>
+      <p>Started the journey with a full wash and initial inspection. Found a few hidden surprises under the dirt, including a dent on the rear quarter panel.</p>
+      <img src="week1.jpg" alt="First wash and inspection" class="update-img">
+    </details>
 
     <!-- Week 2 Update -->
-    <div class="update">
-      <h2>Week 2 – Interior Strip</h2>
-      <p>Removed all seats, carpets, and plastics to assess. Planning a deep clean and some soundproofing before reinstalling.</p>
-      <img src="week2.jpg" alt="Interior stripped out">
-    </div>
+    <details>
+      <summary>Week 2 – Interior Strip</summary>
+      <p>Removed all seats, carpets, and plastics to assess rust and wiring. Planning a deep clean and some soundproofing before reinstalling.</p>
+      <img src="week2.jpg" alt="Interior stripped out" class="update-img">
+    </details>
+
+    <!-- Add more weeks below this -->
   </div>
 
   <footer>
-    &copy; 2025 Impreza WRX STI Build by Andy Horridge
+    &copy; 2025 Impreza WRX STI Blog by Andy Horridge
   </footer>
 </body>
 </html>
+
 
