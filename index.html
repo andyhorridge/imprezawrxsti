@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Impreza WRX STI Blog</title>
+  <title>Impreza WRX STI Gallery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
@@ -31,41 +31,28 @@
       border-radius: 0 0 12px 12px;
     }
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 2em 1em;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
     }
-    details {
-      background-color: #122e55;
-      border-radius: 12px;
-      padding: 1.2em;
-      margin-bottom: 1.5em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    .photo-block {
+      text-align: center;
     }
-    summary {
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #ffd700;
-      cursor: pointer;
-    }
-    summary::-webkit-details-marker {
-      display: none;
-    }
-    summary::before {
-      content: '▶ ';
-      color: #ffd700;
-    }
-    details[open] summary::before {
-      content: '▼ ';
-    }
-    .update-img {
-      margin-top: 1em;
-      max-width: 100%;
+    .photo-block img {
+      width: 100%;
       border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
-    p {
-      line-height: 1.6;
-      margin-top: 1em;
+    .photo-block img:hover {
+      transform: scale(1.02);
+    }
+    .photo-block p {
+      margin-top: 0.5em;
+      font-size: 0.95em;
     }
     footer {
       text-align: center;
@@ -73,52 +60,135 @@
       font-size: 0.9em;
       color: #aaa;
     }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+    .lightbox:target {
+      display: flex;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2em;
+      color: white;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Impreza WRX STI Blog</h1>
+    <h1>Impreza WRX STI Gallery</h1>
     <img src="Impreza.jpg.JPG" alt="Main Subaru WRX STI" class="hero-img">
   </header>
 
   <div class="container">
-    <!-- Week 1 Update -->
-    <details open>
-      <summary>Week 1 – First Wash & Inspection</summary>
-      <p>Started the journey with a full wash and initial inspection. It was satisfying to see the car's paintwork come back to life after removing all the grime.</p>
-
-      <img src="Week1.1 Medium.jpeg" alt="Week 1 - Photo 1" class="update-img">
+    <!-- Repeat this block for each image -->
+    <div class="photo-block">
+      <a href="#img1"><img src="Week1.1 Medium.jpeg" alt="Photo 1"></a>
       <p><em>Caption for photo 1</em></p>
+    </div>
 
-      <img src="Week1.2 Medium.jpeg" alt="Week 1 - Photo 2" class="update-img">
+    <div class="photo-block">
+      <a href="#img2"><img src="Week1.2 Medium.jpeg" alt="Photo 2"></a>
       <p><em>Caption for photo 2</em></p>
+    </div>
 
-      <img src="Week1.3 Medium.jpeg" alt="Week 1 - Photo 3" class="update-img">
+    <div class="photo-block">
+      <a href="#img3"><img src="Week1.3 Medium.jpeg" alt="Photo 3"></a>
       <p><em>Caption for photo 3</em></p>
+    </div>
 
-      <img src="Week1.4 Medium.jpeg" alt="Week 1 - Photo 4" class="update-img">
+    <div class="photo-block">
+      <a href="#img4"><img src="Week1.4 Medium.jpeg" alt="Photo 4"></a>
       <p><em>Caption for photo 4</em></p>
+    </div>
 
-      <img src="Week1.5 Medium.jpeg" alt="Week 1 - Photo 5" class="update-img">
+    <div class="photo-block">
+      <a href="#img5"><img src="Week1.5 Medium.jpeg" alt="Photo 5"></a>
       <p><em>Caption for photo 5</em></p>
+    </div>
 
-      <img src="Week1.5 Medium 2.jpeg" alt="Week 1 - Photo 6" class="update-img">
+    <div class="photo-block">
+      <a href="#img6"><img src="Week1.5 Medium 2.jpeg" alt="Photo 6"></a>
       <p><em>Caption for photo 6</em></p>
-    </details>
+    </div>
 
-    <!-- Week 2 Update -->
-    <details>
-      <summary>Week 2 – Interior Strip</summary>
-      <p>Removed all seats, carpets, and plastics to assess rust and wiring. Planning a deep clean and some soundproofing before reinstalling.</p>
-      <img src="week2.jpg" alt="Interior stripped out" class="update-img">
-    </details>
+    <div class="photo-block">
+      <a href="#img7"><img src="AlloyPre.jpeg" alt="Alloys before refurb"></a>
+      <p><em>Alloys before refurbishment</em></p>
+    </div>
 
-    <!-- Add more weeks below this -->
+    <div class="photo-block">
+      <a href="#img8"><img src="Alloydone.jpeg" alt="Alloys after refurb"></a>
+      <p><em>Alloys fully refurbished</em></p>
+    </div>
+
+    <div class="photo-block">
+      <a href="#img9"><img src="Alloyon.jpeg" alt="Alloys fitted"></a>
+      <p><em>Alloys back on the car</em></p>
+    </div>
+
+    <div class="photo-block">
+      <a href="#img10"><img src="Spacers.jpeg" alt="Spacers installed"></a>
+      <p><em>Hub spacers fitted for improved stance</em></p>
+    </div>
+
+    <div class="photo-block">
+      <a href="#img11"><img src="Boot.jpeg" alt="Boot stripped"></a>
+      <p><em>Boot area ready for treatment</em></p>
+    </div>
+
+    <div class="photo-block">
+      <a href="#img12"><img src="Underbonnet.jpeg" alt="Engine bay before"></a>
+      <p><em>Engine bay before cleanup</em></p>
+    </div>
+
+    <div class="photo-block">
+      <a href="#img13"><img src="Underbonnetpost.jpeg" alt="Engine bay after"></a>
+      <p><em>After cleanup – looking sharper!</em></p>
+    </div>
+
+    <div class="photo-block">
+      <a href="#img14"><img src="Polish.jpeg" alt="Polished bodywork"></a>
+      <p><em>Paintwork polished and shining</em></p>
+    </div>
   </div>
 
+  <!-- Lightbox sections -->
+  <div id="img1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.1 Medium.jpeg" alt=""></div>
+  <div id="img2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.2 Medium.jpeg" alt=""></div>
+  <div id="img3" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.3 Medium.jpeg" alt=""></div>
+  <div id="img4" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.4 Medium.jpeg" alt=""></div>
+  <div id="img5" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.5 Medium.jpeg" alt=""></div>
+  <div id="img6" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.5 Medium 2.jpeg" alt=""></div>
+  <div id="img7" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="AlloyPre.jpeg" alt=""></div>
+  <div id="img8" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Alloydone.jpeg" alt=""></div>
+  <div id="img9" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Alloyon.jpeg" alt=""></div>
+  <div id="img10" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Spacers.jpeg" alt=""></div>
+  <div id="img11" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Boot.jpeg" alt=""></div>
+  <div id="img12" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Underbonnet.jpeg" alt=""></div>
+  <div id="img13" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Underbonnetpost.jpeg" alt=""></div>
+  <div id="img14" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Polish.jpeg" alt=""></div>
+
   <footer>
-    &copy; 2025 Impreza WRX STI Blog by Andy Horridge
+    &copy; 2025 Impreza WRX STI Gallery by Andy Horridge
   </footer>
 </body>
 </html>
-
