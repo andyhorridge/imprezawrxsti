@@ -56,8 +56,6 @@
       font-size: 0.9em;
       color: #aaa;
     }
-
-    /* Lightbox styles */
     .lightbox {
       display: none;
       position: fixed;
@@ -106,23 +104,30 @@
   </footer>
 
   <script>
-    const imageFolder = 'photos/';
-    const imageCount = 22; // Change this if you upload more photos
+    const username = 'andyhorridge';
+    const repo = 'imprezawrxsti';
+    const folder = 'photos';
     const gallery = document.getElementById('gallery');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
-    for (let i = 1; i <= imageCount; i++) {
-      const filename = `photo${String(i).padStart(2, '0')}.jpeg`;
-      const img = new Image();
-      img.src = imageFolder + filename;
-      img.onload = () => {
-        const block = document.createElement('div');
-        block.className = 'photo-block';
-        block.innerHTML = `<img src="${img.src}" alt="Gallery image" onclick="showLightbox('${img.src}')">`;
-        gallery.appendChild(block);
-      };
-      img.onerror = () => {}; // fail silently if a number is skipped
+    async function loadImages() {
+      const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${folder}`;
+      try {
+        const res = await fetch(apiUrl);
+        const files = await res.json();
+        files
+          .filter(file => file.name.match(/\.(jpe?g|png)$/i))
+          .forEach(file => {
+            const block = document.createElement('div');
+            block.className = 'photo-block';
+            block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
+            gallery.appendChild(block);
+          });
+      } catch (err) {
+        gallery.innerHTML = '<p>Unable to load images. Make sure your repo is public.</p>';
+        console.error(err);
+      }
     }
 
     function showLightbox(src) {
@@ -133,6 +138,8 @@
     lightbox.addEventListener('click', () => {
       lightbox.style.display = 'none';
     });
+
+    loadImages();
   </script>
 </body>
 </html>
