@@ -94,51 +94,45 @@
     <img src="Impreza.jpg.JPG" alt="Main Subaru WRX STI" class="hero-img">
   </header>
 
-  <div class="container">
-    <div class="photo-block"><a href="#img1"><img src="Week1.1 Medium.jpeg" alt="Photo 1"></a></div>
-    <div class="photo-block"><a href="#img2"><img src="Week1.2 Medium.jpeg" alt="Photo 2"></a></div>
-    <div class="photo-block"><a href="#img3"><img src="Week1.3 Medium.jpeg" alt="Photo 3"></a></div>
-    <div class="photo-block"><a href="#img4"><img src="Week1.4 Medium.jpeg" alt="Photo 4"></a></div>
-    <div class="photo-block"><a href="#img5"><img src="Week1.5 Medium.jpeg" alt="Photo 5"></a></div>
-    <div class="photo-block"><a href="#img6"><img src="Tipsclean.jpeg" alt="Photo 6"></a></div>
-    <div class="photo-block"><a href="#img7"><img src="Prerader.jpeg" alt="Photo 7"></a></div>
-    <div class="photo-block"><a href="#img8"><img src="Rader.jpeg" alt="Photo 8"></a></div>
-    <div class="photo-block"><a href="#img9"><img src="AlloyPre.jpeg" alt="Photo 9"></a></div>
-    <div class="photo-block"><a href="#img10"><img src="Alloydone.jpeg" alt="Photo 10"></a></div>
-    <div class="photo-block"><a href="#img11"><img src="Alloyon.jpeg" alt="Photo 11"></a></div>
-    <div class="photo-block"><a href="#img12"><img src="Spacers.jpeg" alt="Photo 12"></a></div>
-    <div class="photo-block"><a href="#img13"><img src="Boot.jpeg" alt="Photo 13"></a></div>
-    <div class="photo-block"><a href="#img14"><img src="Underbonnet.jpeg" alt="Photo 14"></a></div>
-    <div class="photo-block"><a href="#img15"><img src="Underbonnetpost.jpeg" alt="Photo 15"></a></div>
-    <div class="photo-block"><a href="#img16"><img src="Polish.jpeg" alt="Photo 16"></a></div>
-    <div class="photo-block"><a href="#img17"><img src="Gearpre.jpeg" alt="Photo 17"></a></div>
-    <div class="photo-block"><a href="#img18"><img src="Gearpost.jpeg" alt="Photo 18"></a></div>
-    <div class="photo-block"><a href="#img19"><img src="Roger.jpeg" alt="Photo 19"></a></div>
-  </div>
+  <div class="container" id="gallery"></div>
 
-  <!-- Lightbox modals -->
-  <div id="img1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.1 Medium.jpeg" alt=""></div>
-  <div id="img2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.2 Medium.jpeg" alt=""></div>
-  <div id="img3" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.3 Medium.jpeg" alt=""></div>
-  <div id="img4" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.4 Medium.jpeg" alt=""></div>
-  <div id="img5" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Week1.5 Medium.jpeg" alt=""></div>
-  <div id="img6" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Tipsclean.jpeg" alt=""></div>
-  <div id="img7" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Prerader.jpeg" alt=""></div>
-  <div id="img8" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Rader.jpeg" alt=""></div>
-  <div id="img9" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="AlloyPre.jpeg" alt=""></div>
-  <div id="img10" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Alloydone.jpeg" alt=""></div>
-  <div id="img11" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Alloyon.jpeg" alt=""></div>
-  <div id="img12" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Spacers.jpeg" alt=""></div>
-  <div id="img13" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Boot.jpeg" alt=""></div>
-  <div id="img14" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Underbonnet.jpeg" alt=""></div>
-  <div id="img15" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Underbonnetpost.jpeg" alt=""></div>
-  <div id="img16" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Polish.jpeg" alt=""></div>
-  <div id="img17" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Gearpre.jpeg" alt=""></div>
-  <div id="img18" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Gearpost.jpeg" alt=""></div>
-  <div id="img19" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="Roger.jpeg" alt=""></div>
+  <div id="lightbox" class="lightbox">
+    <a href="#" class="lightbox-close">&times;</a>
+    <img src="" alt="Full view" id="lightbox-img">
+  </div>
 
   <footer>
     &copy; 2025 Impreza WRX STI Gallery by Andy Horridge
   </footer>
+
+  <script>
+    const imageFolder = 'photos/';
+    const imageCount = 22; // Change this if you upload more photos
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    for (let i = 1; i <= imageCount; i++) {
+      const filename = `photo${String(i).padStart(2, '0')}.jpeg`;
+      const img = new Image();
+      img.src = imageFolder + filename;
+      img.onload = () => {
+        const block = document.createElement('div');
+        block.className = 'photo-block';
+        block.innerHTML = `<img src="${img.src}" alt="Gallery image" onclick="showLightbox('${img.src}')">`;
+        gallery.appendChild(block);
+      };
+      img.onerror = () => {}; // fail silently if a number is skipped
+    }
+
+    function showLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+    }
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
