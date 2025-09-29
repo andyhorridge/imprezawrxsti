@@ -158,15 +158,17 @@
           .filter(f => /\.(jpe?g|png)$/i.test(f.name))
           .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
-        imageFiles.forEach(file => {
+        let videoInserted = false;
+
+        imageFiles.forEach((file, index) => {
           // Add image
           const block = document.createElement('div');
           block.className = 'photo-block';
           block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
           gallery.appendChild(block);
 
-          // Insert video immediately after file named "47.jpg" (or .jpeg/.png)
-          if (/^47\.(jpe?g|png)$/i.test(file.name)) {
+          // Insert video immediately after any filename that includes "47"
+          if (!videoInserted && /47/i.test(file.name)) {
             const videoBlock = document.createElement('div');
             videoBlock.className = 'photo-block';
             videoBlock.innerHTML = `
@@ -179,8 +181,26 @@
               </iframe>
             `;
             gallery.appendChild(videoBlock);
+            videoInserted = true;
           }
         });
+
+        // Fallback: if somehow no "47" was matched, still put it after the 47th image
+        if (!videoInserted && imageFiles.length >= 47) {
+          const videoBlock = document.createElement('div');
+          videoBlock.className = 'photo-block';
+          videoBlock.innerHTML = `
+            <iframe 
+              src="https://www.youtube.com/embed/EkT4hT9OID0"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          `;
+          // insert after 47th image
+          gallery.insertBefore(videoBlock, gallery.children[47].nextSibling);
+        }
       } catch (err) {
         gallery.innerHTML = '<p>Unable to load images. Make sure your repo is public.</p>';
         console.error(err);
