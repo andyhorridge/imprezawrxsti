@@ -147,13 +147,33 @@
       try {
         const res = await fetch(apiUrl);
         const files = await res.json();
+        let count = 0;
+
         files
           .filter(file => file.name.match(/\.(jpe?g|png)$/i))
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, {numeric: true}))
           .forEach(file => {
+            count++;
             const block = document.createElement('div');
             block.className = 'photo-block';
             block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
             gallery.appendChild(block);
+
+            // Insert video right after photo47
+            if (count === 47) {
+              const videoBlock = document.createElement('div');
+              videoBlock.className = 'photo-block';
+              videoBlock.innerHTML = `
+                <iframe 
+                  src="https://www.youtube.com/embed/EkT4hT9OID0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
+              `;
+              gallery.appendChild(videoBlock);
+            }
           });
       } catch (err) {
         gallery.innerHTML = '<p>Unable to load images. Make sure your repo is public.</p>';
