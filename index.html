@@ -102,6 +102,12 @@
       text-decoration: none;
     }
   </style>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" 
+          data-cf-beacon='{"token": "ce9597839c85400db7765bc3e09fe345"}'>
+  </script>
+  <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
   <header>
@@ -153,7 +159,6 @@
         const res = await fetch(apiUrl);
         const files = await res.json();
 
-        // Filter to images and sort naturally
         const imageFiles = files
           .filter(f => /\.(jpe?g|png)$/i.test(f.name))
           .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
@@ -161,13 +166,11 @@
         let videoInserted = false;
 
         imageFiles.forEach((file, index) => {
-          // Add image
           const block = document.createElement('div');
           block.className = 'photo-block';
           block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
           gallery.appendChild(block);
 
-          // Insert video immediately after any filename that includes "47"
           if (!videoInserted && /47/i.test(file.name)) {
             const videoBlock = document.createElement('div');
             videoBlock.className = 'photo-block';
@@ -185,7 +188,6 @@
           }
         });
 
-        // Fallback: if somehow no "47" was matched, still put it after the 47th image
         if (!videoInserted && imageFiles.length >= 47) {
           const videoBlock = document.createElement('div');
           videoBlock.className = 'photo-block';
@@ -198,7 +200,6 @@
               allowfullscreen>
             </iframe>
           `;
-          // insert after 47th image
           gallery.insertBefore(videoBlock, gallery.children[47].nextSibling);
         }
       } catch (err) {
