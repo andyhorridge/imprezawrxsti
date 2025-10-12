@@ -115,7 +115,7 @@
     <img src="Impreza.jpg.JPG" alt="Main Subaru WRX STI" class="hero-img">
   </header>
 
-  <!-- Embedded YouTube videos above photo01 -->
+  <!-- Top YouTube videos (unchanged) -->
   <div class="video-row">
     <iframe 
       src="https://www.youtube.com/embed/Wk4os-DN16s"
@@ -171,12 +171,13 @@
           block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
           gallery.appendChild(block);
 
-          if (!videoInserted && /47/i.test(file.name)) {
+          // Insert new video permanently after photo63
+          if (!videoInserted && /63/i.test(file.name)) {
             const videoBlock = document.createElement('div');
             videoBlock.className = 'photo-block';
             videoBlock.innerHTML = `
               <iframe 
-                src="https://www.youtube.com/embed/EkT4hT9OID0"
+                src="https://www.youtube.com/embed/08nICO99Now"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -188,19 +189,20 @@
           }
         });
 
-        if (!videoInserted && imageFiles.length >= 47) {
+        // Fallback: ensure it appears even if photo63 missing
+        if (!videoInserted && imageFiles.length >= 63) {
           const videoBlock = document.createElement('div');
           videoBlock.className = 'photo-block';
           videoBlock.innerHTML = `
             <iframe 
-              src="https://www.youtube.com/embed/EkT4hT9OID0"
+              src="https://www.youtube.com/embed/08nICO99Now"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen>
             </iframe>
           `;
-          gallery.insertBefore(videoBlock, gallery.children[47].nextSibling);
+          gallery.insertBefore(videoBlock, gallery.children[63].nextSibling);
         }
       } catch (err) {
         gallery.innerHTML = '<p>Unable to load images. Make sure your repo is public.</p>';
