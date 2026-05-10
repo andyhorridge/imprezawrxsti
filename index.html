@@ -63,6 +63,8 @@
       width: 300px;
       height: 533px;
       border-radius: 8px;
+      display: block;
+      margin: 0 auto 2em;
     }
     .photo-block img:hover {
       transform: scale(1.02);
@@ -104,7 +106,7 @@
   </style>
 
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" 
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "ce9597839c85400db7765bc3e09fe345"}'>
   </script>
   <!-- End Cloudflare Web Analytics -->
@@ -117,7 +119,7 @@
 
   <!-- Top YouTube videos (unchanged) -->
   <div class="video-row">
-    <iframe 
+    <iframe
       src="https://www.youtube.com/embed/Wk4os-DN16s"
       title="YouTube video player"
       frameborder="0"
@@ -125,7 +127,7 @@
       allowfullscreen>
     </iframe>
 
-    <iframe 
+    <iframe
       src="https://www.youtube.com/embed/qJm58D1PV6k"
       title="YouTube video player"
       frameborder="0"
@@ -161,23 +163,26 @@
 
         const imageFiles = files
           .filter(f => /\.(jpe?g|png)$/i.test(f.name))
-          .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, {
+            numeric: true,
+            sensitivity: 'base'
+          }));
 
-        let videoInserted = false;
+        let videoInserted63 = false;
         let videoInserted110 = false;
 
-        imageFiles.forEach((file, index) => {
+        imageFiles.forEach((file) => {
           const block = document.createElement('div');
           block.className = 'photo-block';
           block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
           gallery.appendChild(block);
 
-          // Insert existing video permanently after photo63
-          if (!videoInserted && /63/i.test(file.name)) {
+          // Existing video after photo63
+          if (!videoInserted63 && /63/i.test(file.name)) {
             const videoBlock = document.createElement('div');
             videoBlock.className = 'photo-block';
             videoBlock.innerHTML = `
-              <iframe 
+              <iframe
                 src="https://www.youtube.com/embed/08nICO99Now"
                 title="YouTube video player"
                 frameborder="0"
@@ -186,15 +191,23 @@
               </iframe>
             `;
             gallery.appendChild(videoBlock);
-            videoInserted = true;
+            videoInserted63 = true;
           }
 
-          // Insert additional video permanently after photo110
+          // Two videos after photo110
           if (!videoInserted110 && /110/i.test(file.name)) {
             const videoBlock110 = document.createElement('div');
             videoBlock110.className = 'photo-block';
             videoBlock110.innerHTML = `
-              <iframe 
+              <iframe
+                src="https://www.youtube.com/embed/rtCwo5VI-5Q"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+
+              <iframe
                 src="https://www.youtube.com/embed/8DQ7n9tfhmw"
                 title="YouTube video player"
                 frameborder="0"
@@ -207,12 +220,12 @@
           }
         });
 
-        // Fallback: ensure existing video appears even if photo63 missing
-        if (!videoInserted && imageFiles.length >= 63) {
+        // Fallback for video after photo63
+        if (!videoInserted63 && imageFiles.length >= 63) {
           const videoBlock = document.createElement('div');
           videoBlock.className = 'photo-block';
           videoBlock.innerHTML = `
-            <iframe 
+            <iframe
               src="https://www.youtube.com/embed/08nICO99Now"
               title="YouTube video player"
               frameborder="0"
@@ -223,12 +236,20 @@
           gallery.insertBefore(videoBlock, gallery.children[63].nextSibling);
         }
 
-        // Fallback: ensure additional video appears even if photo110 missing
+        // Fallback for two videos after photo110
         if (!videoInserted110 && imageFiles.length >= 110) {
           const videoBlock110 = document.createElement('div');
           videoBlock110.className = 'photo-block';
           videoBlock110.innerHTML = `
-            <iframe 
+            <iframe
+              src="https://www.youtube.com/embed/rtCwo5VI-5Q"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+
+            <iframe
               src="https://www.youtube.com/embed/8DQ7n9tfhmw"
               title="YouTube video player"
               frameborder="0"
