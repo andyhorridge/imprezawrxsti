@@ -164,6 +164,7 @@
           .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
 
         let videoInserted = false;
+        let videoInserted110 = false;
 
         imageFiles.forEach((file, index) => {
           const block = document.createElement('div');
@@ -187,6 +188,23 @@
             gallery.appendChild(videoBlock);
             videoInserted = true;
           }
+
+          // Insert additional video permanently after photo110
+          if (!videoInserted110 && /110/i.test(file.name)) {
+            const videoBlock110 = document.createElement('div');
+            videoBlock110.className = 'photo-block';
+            videoBlock110.innerHTML = `
+              <iframe 
+                src="https://www.youtube.com/embed/SpzULdPkCLc"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            `;
+            gallery.appendChild(videoBlock110);
+            videoInserted110 = true;
+          }
         });
 
         // Fallback: ensure it appears even if photo63 missing
@@ -203,6 +221,22 @@
             </iframe>
           `;
           gallery.insertBefore(videoBlock, gallery.children[63].nextSibling);
+        }
+
+        // Fallback: ensure additional video appears even if photo110 missing
+        if (!videoInserted110 && imageFiles.length >= 110) {
+          const videoBlock110 = document.createElement('div');
+          videoBlock110.className = 'photo-block';
+          videoBlock110.innerHTML = `
+            <iframe 
+              src="https://www.youtube.com/embed/SpzULdPkCLc"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          `;
+          gallery.insertBefore(videoBlock110, gallery.children[110].nextSibling);
         }
       } catch (err) {
         gallery.innerHTML = '<p>Unable to load images. Make sure your repo is public.</p>';
