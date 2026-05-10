@@ -178,7 +178,21 @@
             videoBlock.className = 'photo-block';
             videoBlock.innerHTML = `
               <iframe 
-                src="https://www.youtube.com/embed/08nICO99Now"
+                src="https://www.youtube.com/embed/  // Insert additional video permanently after photo110
+          if (!videoInserted110 && /110/i.test(file.name)) {
+            const videoBlock110 = document.createElement('div');
+            videoBlock110.className = 'photo-block';
+            videoBlock110.innerHTML = `
+              <iframe 
+                src="https://www.youtube.com/embed/8DQ7n9tfhmw"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+            `;
+            gallery.appendChild(videoBlock110);
+            videoInserted110 = true;"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -195,7 +209,7 @@
             videoBlock110.className = 'photo-block';
             videoBlock110.innerHTML = `
               <iframe 
-                src="https://www.youtube.com/embed/SpzULdPkCLc"
+                src="https://www.youtube.com/embed/8DQ7n9tfhmw"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -229,7 +243,7 @@
           videoBlock110.className = 'photo-block';
           videoBlock110.innerHTML = `
             <iframe 
-              src="https://www.youtube.com/embed/SpzULdPkCLc"
+              src="https://www.youtube.com/embed/8DQ7n9tfhmw"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
