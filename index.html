@@ -91,9 +91,7 @@
         .logo {
             font-size: 21px;
             font-weight: 900;
-
             letter-spacing: 1px;
-
             white-space: nowrap;
         }
 
@@ -106,7 +104,6 @@
         .nav-links {
             display: flex;
             align-items: center;
-
             gap: 25px;
         }
 
@@ -341,7 +338,6 @@
 
         .spec-value {
             font-size: 18px;
-
             font-weight: 750;
         }
 
@@ -442,17 +438,13 @@
         }
 
 
-        .gallery-info {
-            color: #888;
-
-            margin-bottom: 50px;
-
-            font-size: 14px;
+        .year-section {
+            margin-bottom: 80px;
         }
 
 
-        .year-section {
-            margin-bottom: 80px;
+        .year-section.no-heading {
+            margin-top: 0;
         }
 
 
@@ -832,7 +824,7 @@
             </a>
 
             <a href="#videos">
-                VIDEOS
+                VIDEO
             </a>
 
             <a href="#gallery-section">
@@ -1124,7 +1116,7 @@
 
 
 <!-- =========================
-     VIDEOS
+     FOR SALE ADVERT
 ========================= -->
 
 <section id="videos">
@@ -1132,7 +1124,7 @@
     <div class="section">
 
         <div class="section-title-small">
-            VIDEOS
+            VIDEO
         </div>
 
 
@@ -1146,7 +1138,7 @@
 
             <iframe
                 src="https://www.youtube.com/embed/Wk4os-DN16s"
-                title="Subaru Impreza WRX STI video"
+                title="Subaru Impreza WRX STI for sale advert"
                 allow="
                     accelerometer;
                     autoplay;
@@ -1162,7 +1154,7 @@
 
             <iframe
                 src="https://www.youtube.com/embed/qJm58D1PV6k"
-                title="Subaru Impreza WRX STI video"
+                title="Subaru Impreza WRX STI for sale advert"
                 allow="
                     accelerometer;
                     autoplay;
@@ -1203,15 +1195,6 @@
         <h2>
             Through The Years
         </h2>
-
-
-        <p class="gallery-info">
-
-            Photographs are grouped by the original
-            date stored inside each image where
-            that information is available.
-
-        </p>
 
 
         <div id="gallery">
@@ -1300,7 +1283,7 @@
 
     /* =========================
        PHOTO NUMBER
-       Used internally only
+       INTERNAL ONLY
     ========================= */
 
     function getPhotoNumber(
@@ -1369,7 +1352,7 @@
 
 
     /* =========================
-       EXIF
+       READ EXIF DATA
     ========================= */
 
     async function getPhotoInfo(
@@ -1459,7 +1442,7 @@
 
 
     /* =========================
-       PHOTO BLOCK
+       PHOTO TILE
     ========================= */
 
     function createPhotoBlock(
@@ -1534,8 +1517,8 @@
 
 
     /* =========================
-       VIDEO BLOCK
-       One video = one grid tile
+       VIDEO TILE
+       ONE VIDEO PER GRID TILE
     ========================= */
 
     function createVideoBlock(
@@ -1586,7 +1569,7 @@
 
 
     /* =========================
-       ADD PHOTO / VIDEO
+       INSERT PHOTO & VIDEOS
     ========================= */
 
     function addPhotoToGrid(
@@ -1666,27 +1649,6 @@
             "year-section";
 
 
-        const heading =
-            document.createElement(
-                "div"
-            );
-
-
-        heading.className =
-            "year-header";
-
-
-        heading.innerHTML = `
-
-            <h3>
-                ${title}
-            </h3>
-
-            <div class="year-line"></div>
-
-        `;
-
-
         const grid =
             document.createElement(
                 "div"
@@ -1697,9 +1659,42 @@
             "gallery";
 
 
-        section.appendChild(
-            heading
-        );
+        if (title) {
+
+            const heading =
+                document.createElement(
+                    "div"
+                );
+
+
+            heading.className =
+                "year-header";
+
+
+            heading.innerHTML = `
+
+                <h3>
+                    ${title}
+                </h3>
+
+                <div class="year-line"></div>
+
+            `;
+
+
+            section.appendChild(
+                heading
+            );
+
+        }
+
+        else {
+
+            section.classList.add(
+                "no-heading"
+            );
+
+        }
 
 
         section.appendChild(
@@ -1793,7 +1788,7 @@
 
 
             /* =========================
-               GROUP PHOTOS
+               GROUP BY YEAR
             ========================= */
 
             const yearGroups =
@@ -1866,7 +1861,7 @@
 
 
             /* =========================
-               DRAW YEAR GROUPS
+               YEAR GROUPS
             ========================= */
 
             years.forEach(
@@ -1912,7 +1907,8 @@
 
 
             /* =========================
-               UNKNOWN DATES
+               PHOTOS WITHOUT DATES
+               NO HEADER
             ========================= */
 
             if (
@@ -1924,7 +1920,7 @@
                     grid
                 } =
                     createYearSection(
-                        "OTHER PHOTOS"
+                        ""
                     );
 
 
