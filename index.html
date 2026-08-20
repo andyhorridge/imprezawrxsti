@@ -415,9 +415,7 @@
         }
 
 
-        .video-row iframe,
-        .video-block iframe {
-
+        .video-row iframe {
             width: min(100%, 340px);
 
             height: 604px;
@@ -498,6 +496,8 @@
                 );
 
             gap: 22px;
+
+            align-items: start;
         }
 
 
@@ -536,46 +536,48 @@
 
 
         .photo-meta {
-            padding:
-                13px
-                15px
-                15px;
-        }
-
-
-        .photo-number {
-            color: #fff;
-
-            font-size: 13px;
-
-            font-weight: 750;
+            padding: 10px 15px 13px;
         }
 
 
         .photo-date {
-            min-height: 17px;
-
-            margin-top: 4px;
-
             color: #888;
 
             font-size: 12px;
         }
 
 
+
+        /* =========================
+           GALLERY VIDEO TILE
+        ========================= */
+
         .video-block {
+            background: #10141d;
+
             display: flex;
-
-            flex-direction: column;
-
-            gap: 20px;
 
             align-items: center;
             justify-content: center;
 
-            padding: 15px;
+            padding: 0;
 
-            background: transparent;
+            overflow: hidden;
+        }
+
+
+        .video-block iframe {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 9 / 16;
+
+            height: auto;
+
+            border: 0;
+
+            background: #000;
         }
 
 
@@ -756,12 +758,8 @@
 
 
             .photo-meta {
-                padding: 10px;
-            }
-
-
-            .photo-number {
-                font-size: 11px;
+                padding:
+                    8px 10px 10px;
             }
 
 
@@ -775,15 +773,12 @@
             }
 
 
-            .video-block {
-                grid-column:
-                    1 / -1;
+            .video-block iframe {
+                aspect-ratio: 9 / 16;
             }
 
 
-            .video-row iframe,
-            .video-block iframe {
-
+            .video-row iframe {
                 width: 100%;
 
                 max-width: 360px;
@@ -1305,6 +1300,7 @@
 
     /* =========================
        PHOTO NUMBER
+       Used internally only
     ========================= */
 
     function getPhotoNumber(
@@ -1418,6 +1414,31 @@
         }
 
 
+        let year = null;
+
+
+        if (date) {
+
+            const parsedDate =
+                date instanceof Date
+                    ? date
+                    : new Date(date);
+
+
+            if (
+                !Number.isNaN(
+                    parsedDate.getTime()
+                )
+            ) {
+
+                year =
+                    parsedDate.getFullYear();
+
+            }
+
+        }
+
+
         return {
 
             file: file,
@@ -1429,10 +1450,7 @@
 
             date: date,
 
-            year:
-                date
-                    ? new Date(date).getFullYear()
-                    : null
+            year: year
 
         };
 
@@ -1468,21 +1486,25 @@
 
             <img
                 src="${photo.file.download_url}"
-                alt="Subaru Impreza WRX STI photo ${photo.number}"
+                alt="Subaru Impreza WRX STI"
                 loading="lazy"
             >
 
-            <div class="photo-meta">
+            ${
+                formattedDate
+                    ?
+                    `
+                    <div class="photo-meta">
 
-                <div class="photo-number">
-                    Photo ${photo.number}
-                </div>
+                        <div class="photo-date">
+                            ${formattedDate}
+                        </div>
 
-                <div class="photo-date">
-                    ${formattedDate}
-                </div>
-
-            </div>
+                    </div>
+                    `
+                    :
+                    ""
+            }
 
         `;
 
@@ -1513,10 +1535,11 @@
 
     /* =========================
        VIDEO BLOCK
+       One video = one grid tile
     ========================= */
 
     function createVideoBlock(
-        videoIds
+        videoId
     ) {
 
         const block =
@@ -1529,40 +1552,97 @@
             "photo-block video-block";
 
 
-        videoIds.forEach(
-            videoId => {
-
-                const iframe =
-                    document.createElement(
-                        "iframe"
-                    );
+        const iframe =
+            document.createElement(
+                "iframe"
+            );
 
 
-                iframe.src =
-                    `https://www.youtube.com/embed/${videoId}`;
+        iframe.src =
+            `https://www.youtube.com/embed/${videoId}`;
 
 
-                iframe.title =
-                    "Subaru Impreza WRX STI video";
+        iframe.title =
+            "Subaru Impreza WRX STI video";
 
 
-                iframe.allow =
-                    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allow =
+            "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
 
 
-                iframe.allowFullscreen =
-                    true;
+        iframe.allowFullscreen =
+            true;
 
 
-                block.appendChild(
-                    iframe
-                );
-
-            }
+        block.appendChild(
+            iframe
         );
 
 
         return block;
+
+    }
+
+
+
+    /* =========================
+       ADD PHOTO / VIDEO
+    ========================= */
+
+    function addPhotoToGrid(
+        grid,
+        photo
+    ) {
+
+        grid.appendChild(
+            createPhotoBlock(
+                photo
+            )
+        );
+
+
+        /* VIDEO AFTER PHOTO 63 */
+
+        if (
+            photo.number === 63
+        ) {
+
+            grid.appendChild(
+                createVideoBlock(
+                    "08nICO99Now"
+                )
+            );
+
+        }
+
+
+        /* VIDEOS AFTER PHOTO 110 */
+
+        if (
+            photo.number === 110
+        ) {
+
+            grid.appendChild(
+                createVideoBlock(
+                    "8DQ7n9tfhmw"
+                )
+            );
+
+
+            grid.appendChild(
+                createVideoBlock(
+                    "rtCwo5VI-5Q"
+                )
+            );
+
+
+            grid.appendChild(
+                createVideoBlock(
+                    "DFUTlWavHxA"
+                )
+            );
+
+        }
 
     }
 
@@ -1803,56 +1883,20 @@
 
                     yearGroups[
                         year
-                    ].forEach(
+                    ]
+
+                    .sort(
+                        (a, b) =>
+                            a.number - b.number
+                    )
+
+                    .forEach(
                         photo => {
 
-                            grid.appendChild(
-                                createPhotoBlock(
-                                    photo
-                                )
+                            addPhotoToGrid(
+                                grid,
+                                photo
                             );
-
-
-
-                            /* VIDEO AFTER PHOTO 63 */
-
-                            if (
-                                photo.number === 63
-                            ) {
-
-                                grid.appendChild(
-
-                                    createVideoBlock(
-                                        [
-                                            "08nICO99Now"
-                                        ]
-                                    )
-
-                                );
-
-                            }
-
-
-
-                            /* VIDEOS AFTER PHOTO 110 */
-
-                            if (
-                                photo.number === 110
-                            ) {
-
-                                grid.appendChild(
-
-                                    createVideoBlock(
-                                        [
-                                            "8DQ7n9tfhmw",
-                                            "rtCwo5VI-5Q",
-                                            "DFUTlWavHxA"
-                                        ]
-                                    )
-
-                                );
-
-                            }
 
                         }
                     );
@@ -1884,55 +1928,23 @@
                     );
 
 
-                unknownPhotos.forEach(
-                    photo => {
+                unknownPhotos
 
-                        grid.appendChild(
-                            createPhotoBlock(
+                    .sort(
+                        (a, b) =>
+                            a.number - b.number
+                    )
+
+                    .forEach(
+                        photo => {
+
+                            addPhotoToGrid(
+                                grid,
                                 photo
-                            )
-                        );
-
-
-
-                        if (
-                            photo.number === 63
-                        ) {
-
-                            grid.appendChild(
-
-                                createVideoBlock(
-                                    [
-                                        "08nICO99Now"
-                                    ]
-                                )
-
                             );
 
                         }
-
-
-
-                        if (
-                            photo.number === 110
-                        ) {
-
-                            grid.appendChild(
-
-                                createVideoBlock(
-                                    [
-                                        "8DQ7n9tfhmw",
-                                        "rtCwo5VI-5Q",
-                                        "DFUTlWavHxA"
-                                    ]
-                                )
-
-                            );
-
-                        }
-
-                    }
-                );
+                    );
 
 
                 gallery.appendChild(
@@ -2076,4 +2088,5 @@
 
 
 </body>
+
 </html>
