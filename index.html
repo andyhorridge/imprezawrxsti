@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -14,15 +15,16 @@
         content="#05070b"
     >
 
-    <title>Andy's Subaru Impreza WRX STI</title>
+    <title>Subaru Impreza WRX STI</title>
 
     <meta
         name="description"
-        content="Andy's Subaru Impreza WRX STI JDM - photos, videos and history."
+        content="2004 Subaru Impreza WRX STI JDM - specification, modifications, videos and photo history."
     >
 
     <!-- EXIF reader -->
     <script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
+
 
     <style>
 
@@ -38,6 +40,7 @@
             margin: 0;
             background: #05070b;
             color: #f5f5f5;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -58,34 +61,39 @@
             top: 0;
             left: 0;
             right: 0;
+
             z-index: 1000;
 
             background: rgba(5, 7, 11, 0.88);
+
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
 
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.08);
         }
 
 
         nav {
             max-width: 1300px;
-            margin: auto;
-
             height: 72px;
+
+            margin: auto;
+            padding: 0 24px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 0 24px;
         }
 
 
         .logo {
             font-size: 21px;
             font-weight: 900;
+
             letter-spacing: 1px;
+
             white-space: nowrap;
         }
 
@@ -98,17 +106,20 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 28px;
+
+            gap: 25px;
         }
 
 
         .nav-links a {
             color: #ddd;
+
             text-decoration: none;
 
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1.3px;
+            font-size: 12px;
+            font-weight: 750;
+
+            letter-spacing: 1.1px;
 
             transition: 0.2s;
         }
@@ -157,9 +168,9 @@
             background:
                 linear-gradient(
                     to bottom,
-                    rgba(0,0,0,0.10) 20%,
-                    rgba(0,0,0,0.35) 55%,
-                    rgba(5,7,11,0.96) 100%
+                    rgba(0,0,0,0.05) 20%,
+                    rgba(0,0,0,0.28) 55%,
+                    rgba(5,7,11,0.97) 100%
                 );
         }
 
@@ -180,24 +191,18 @@
         }
 
 
-        .hero-small {
-            color: #ffd400;
-
-            font-size: 13px;
-            font-weight: 800;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 12px;
-        }
-
-
         .hero h1 {
             margin: 0;
 
             max-width: 850px;
 
-            font-size: clamp(45px, 8vw, 95px);
+            font-size:
+                clamp(
+                    46px,
+                    8vw,
+                    95px
+                );
+
             line-height: 0.92;
 
             letter-spacing: -4px;
@@ -212,13 +217,14 @@
             color: #d5d5d5;
 
             font-size: 19px;
+
             letter-spacing: 1px;
         }
 
 
 
         /* =========================
-           GENERAL SECTIONS
+           GENERAL
         ========================= */
 
         section {
@@ -231,7 +237,13 @@
 
             margin: auto;
 
-            padding: 100px 24px;
+            padding:
+                100px 24px;
+        }
+
+
+        .section-dark {
+            background: #090c12;
         }
 
 
@@ -248,9 +260,15 @@
 
 
         .section h2 {
-            margin: 0 0 22px;
+            margin:
+                0 0 22px;
 
-            font-size: clamp(34px, 5vw, 60px);
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    60px
+                );
 
             letter-spacing: -2px;
 
@@ -261,34 +279,34 @@
         .section-intro {
             color: #aaa;
 
-            max-width: 720px;
+            max-width: 760px;
 
             font-size: 17px;
+
             line-height: 1.7;
         }
 
 
 
         /* =========================
-           CAR DETAILS
+           SPECIFICATIONS
         ========================= */
 
-        .car-details {
-            background: #090c12;
-        }
-
-
         .spec-grid {
-            margin-top: 55px;
+            margin-top: 50px;
 
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(190px, 1fr));
+                repeat(
+                    auto-fit,
+                    minmax(180px, 1fr)
+                );
 
             gap: 1px;
 
-            background: rgba(255,255,255,0.08);
+            background:
+                rgba(255,255,255,0.08);
 
             border:
                 1px solid
@@ -322,8 +340,61 @@
 
 
         .spec-value {
-            font-size: 19px;
+            font-size: 18px;
+
             font-weight: 750;
+        }
+
+
+
+        /* =========================
+           MODIFICATIONS
+        ========================= */
+
+        .mods-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(240px, 1fr)
+                );
+
+            gap: 18px;
+
+            margin-top: 45px;
+        }
+
+
+        .mod-card {
+            background: #10141d;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.06);
+
+            border-radius: 14px;
+
+            padding: 25px;
+        }
+
+
+        .mod-card h3 {
+            margin:
+                0 0 10px;
+
+            font-size: 17px;
+        }
+
+
+        .mod-card p {
+            margin: 0;
+
+            color: #888;
+
+            font-size: 14px;
+
+            line-height: 1.6;
         }
 
 
@@ -331,11 +402,6 @@
         /* =========================
            VIDEOS
         ========================= */
-
-        .videos {
-            background: #05070b;
-        }
-
 
         .video-row {
             margin-top: 45px;
@@ -370,7 +436,7 @@
 
 
         /* =========================
-           GALLERY
+           PHOTO HISTORY
         ========================= */
 
         .gallery-section {
@@ -379,11 +445,46 @@
 
 
         .gallery-info {
-            margin-bottom: 40px;
-
             color: #888;
 
+            margin-bottom: 50px;
+
             font-size: 14px;
+        }
+
+
+        .year-section {
+            margin-bottom: 80px;
+        }
+
+
+        .year-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .year-header h3 {
+            margin: 0;
+
+            font-size: 38px;
+
+            letter-spacing: -1px;
+        }
+
+
+        .year-line {
+            flex: 1;
+
+            height: 1px;
+
+            background:
+                rgba(255,255,255,0.1);
         }
 
 
@@ -414,19 +515,18 @@
 
 
         .photo-block img {
+            display: block;
+
             width: 100%;
 
             aspect-ratio: 4 / 3;
 
             object-fit: cover;
 
-            display: block;
-
             cursor: pointer;
 
             transition:
-                transform .35s ease,
-                opacity .35s ease;
+                transform .35s ease;
         }
 
 
@@ -436,7 +536,10 @@
 
 
         .photo-meta {
-            padding: 13px 15px 15px;
+            padding:
+                13px
+                15px
+                15px;
         }
 
 
@@ -444,14 +547,15 @@
             color: #fff;
 
             font-size: 13px;
+
             font-weight: 750;
         }
 
 
         .photo-date {
-            margin-top: 4px;
-
             min-height: 17px;
+
+            margin-top: 4px;
 
             color: #888;
 
@@ -467,7 +571,6 @@
             gap: 20px;
 
             align-items: center;
-
             justify-content: center;
 
             padding: 15px;
@@ -490,10 +593,10 @@
 
             z-index: 9999;
 
-            background: rgba(0,0,0,0.96);
+            background:
+                rgba(0,0,0,0.96);
 
             align-items: center;
-
             justify-content: center;
 
             padding: 25px;
@@ -516,9 +619,10 @@
             right: 25px;
             top: 15px;
 
-            color: #fff;
+            color: white;
 
             font-size: 42px;
+
             line-height: 1;
 
             cursor: pointer;
@@ -531,11 +635,10 @@
         ========================= */
 
         .loading {
-            grid-column: 1 / -1;
-
             text-align: center;
 
-            padding: 80px 20px;
+            padding:
+                80px 20px;
 
             color: #777;
         }
@@ -553,7 +656,8 @@
 
             text-align: center;
 
-            padding: 45px 20px;
+            padding:
+                45px 20px;
 
             color: #666;
 
@@ -566,32 +670,36 @@
            MOBILE
         ========================= */
 
-        @media (max-width: 700px) {
+        @media
+        (max-width: 800px) {
 
             nav {
                 height: 62px;
 
-                padding: 0 16px;
+                padding:
+                    0 15px;
             }
 
 
             .logo {
-                font-size: 17px;
+                font-size: 16px;
             }
 
 
             .nav-links {
-                gap: 14px;
+                gap: 12px;
             }
 
 
             .nav-links a {
-                font-size: 10px;
-                letter-spacing: .7px;
+                font-size: 9px;
+
+                letter-spacing: .5px;
             }
 
 
-            .nav-links a:nth-child(2) {
+            .nav-links a:nth-child(2),
+            .nav-links a:nth-child(3) {
                 display: none;
             }
 
@@ -609,7 +717,8 @@
 
 
             .hero h1 {
-                font-size: 54px;
+                font-size: 52px;
+
                 letter-spacing: -3px;
             }
 
@@ -661,8 +770,14 @@
             }
 
 
+            .year-header h3 {
+                font-size: 29px;
+            }
+
+
             .video-block {
-                grid-column: 1 / -1;
+                grid-column:
+                    1 / -1;
             }
 
 
@@ -691,7 +806,6 @@
 </head>
 
 
-
 <body>
 
 
@@ -712,6 +826,14 @@
 
             <a href="#car">
                 THE CAR
+            </a>
+
+            <a href="#spec">
+                SPEC
+            </a>
+
+            <a href="#mods">
+                MODIFICATIONS
             </a>
 
             <a href="#videos">
@@ -748,11 +870,6 @@
 
     <div class="hero-content">
 
-        <div class="hero-small">
-            ANDY'S IMPREZA
-        </div>
-
-
         <h1>
             SUBARU<br>
             IMPREZA<br>
@@ -761,7 +878,7 @@
 
 
         <div class="hero-subtitle">
-            JDM • Turbo • AWD
+            2004 • JDM • TURBO • AWD
         </div>
 
     </div>
@@ -771,11 +888,11 @@
 
 
 <!-- =========================
-     CAR DETAILS
+     THE CAR
 ========================= -->
 
 <section
-    class="car-details"
+    class="section-dark"
     id="car"
 >
 
@@ -787,18 +904,47 @@
 
 
         <h2>
-            WRX STI
+            2004 Subaru Impreza WRX STI
         </h2>
 
 
         <p class="section-intro">
-            A photographic history of my Subaru Impreza
-            WRX STI, documenting the car through the years
-            with photos and videos.
+
+            A Japanese-market Subaru Impreza WRX STI
+            documented through the years.
+
+            This site brings together the car's
+            specification, modifications, videos
+            and photographic history.
+
         </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SPECIFICATION
+========================= -->
+
+<section id="spec">
+
+    <div class="section">
+
+        <div class="section-title-small">
+            SPECIFICATION
+        </div>
+
+
+        <h2>
+            Factory Details
+        </h2>
 
 
         <div class="spec-grid">
+
 
             <div class="spec">
 
@@ -808,6 +954,19 @@
 
                 <span class="spec-value">
                     Impreza WRX STI
+                </span>
+
+            </div>
+
+
+            <div class="spec">
+
+                <span class="spec-label">
+                    YEAR
+                </span>
+
+                <span class="spec-value">
+                    2004
                 </span>
 
             </div>
@@ -842,7 +1001,7 @@
             <div class="spec">
 
                 <span class="spec-label">
-                    DRIVE
+                    DRIVETRAIN
                 </span>
 
                 <span class="spec-value">
@@ -864,6 +1023,103 @@
 
             </div>
 
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MODIFICATIONS
+========================= -->
+
+<section
+    class="section-dark"
+    id="mods"
+>
+
+    <div class="section">
+
+        <div class="section-title-small">
+            MODIFICATIONS
+        </div>
+
+
+        <h2>
+            Changes & Upgrades
+        </h2>
+
+
+        <p class="section-intro">
+
+            Modifications, maintenance and upgrades
+            carried out during the car's life.
+
+        </p>
+
+
+        <div class="mods-grid">
+
+
+            <div class="mod-card">
+
+                <h3>
+                    Engine
+                </h3>
+
+                <p>
+                    Engine and performance modifications
+                    can be listed here.
+                </p>
+
+            </div>
+
+
+            <div class="mod-card">
+
+                <h3>
+                    Exhaust
+                </h3>
+
+                <p>
+                    Exhaust system and related
+                    upgrades.
+                </p>
+
+            </div>
+
+
+            <div class="mod-card">
+
+                <h3>
+                    Suspension
+                </h3>
+
+                <p>
+                    Suspension, handling and chassis
+                    changes.
+                </p>
+
+            </div>
+
+
+            <div class="mod-card">
+
+                <h3>
+                    Exterior
+                </h3>
+
+                <p>
+                    Wheels, styling and exterior
+                    changes.
+                </p>
+
+            </div>
+
+
         </div>
 
     </div>
@@ -876,15 +1132,12 @@
      VIDEOS
 ========================= -->
 
-<section
-    class="videos"
-    id="videos"
->
+<section id="videos">
 
     <div class="section">
 
         <div class="section-title-small">
-            VIDEO
+            VIDEOS
         </div>
 
 
@@ -937,7 +1190,7 @@
 
 
 <!-- =========================
-     GALLERY
+     PHOTO HISTORY
 ========================= -->
 
 <section
@@ -953,23 +1206,23 @@
 
 
         <h2>
-            Gallery
+            Through The Years
         </h2>
 
 
         <p class="gallery-info">
-            Original photo dates are shown automatically
-            where they are still stored inside the image.
+
+            Photographs are grouped by the original
+            date stored inside each image where
+            that information is available.
+
         </p>
 
 
-        <div
-            class="gallery"
-            id="gallery"
-        >
+        <div id="gallery">
 
             <div class="loading">
-                Loading gallery…
+                Loading photo history…
             </div>
 
         </div>
@@ -1011,7 +1264,7 @@
 
     &copy;
     <span id="year"></span>
-    Andy Horridge • Subaru Impreza WRX STI
+    Subaru Impreza WRX STI
 
 </footer>
 
@@ -1019,10 +1272,13 @@
 
 <script>
 
-    const username = "andyhorridge";
+    const username =
+        "andyhorridge";
+
 
     const repo =
         "imprezawrxsti";
+
 
     const folder =
         "photos";
@@ -1058,9 +1314,11 @@
         const matches =
             filename.match(/\d+/g);
 
+
         if (!matches) {
             return 999999;
         }
+
 
         return parseInt(
             matches[matches.length - 1],
@@ -1095,7 +1353,9 @@
                 parsed.getTime()
             )
         ) {
+
             return "";
+
         }
 
 
@@ -1113,18 +1373,21 @@
 
 
     /* =========================
-       READ EXIF DATE
+       EXIF
     ========================= */
 
-    async function getPhotoDate(
-        imageUrl
+    async function getPhotoInfo(
+        file
     ) {
+
+        let date = null;
+
 
         try {
 
             const exif =
                 await exifr.parse(
-                    imageUrl,
+                    file.download_url,
                     [
                         "DateTimeOriginal",
                         "CreateDate",
@@ -1133,20 +1396,15 @@
                 );
 
 
-            if (!exif) {
-                return "";
+            if (exif) {
+
+                date =
+                    exif.DateTimeOriginal ||
+                    exif.CreateDate ||
+                    exif.ModifyDate ||
+                    null;
+
             }
-
-
-            const date =
-                exif.DateTimeOriginal ||
-                exif.CreateDate ||
-                exif.ModifyDate;
-
-
-            return formatPhotoDate(
-                date
-            );
 
         }
 
@@ -1154,30 +1412,41 @@
 
             console.log(
                 "No EXIF date:",
-                imageUrl
+                file.name
             );
 
-            return "";
-
         }
+
+
+        return {
+
+            file: file,
+
+            number:
+                getPhotoNumber(
+                    file.name
+                ),
+
+            date: date,
+
+            year:
+                date
+                    ? new Date(date).getFullYear()
+                    : null
+
+        };
 
     }
 
 
 
     /* =========================
-       CREATE PHOTO
+       PHOTO BLOCK
     ========================= */
 
     function createPhotoBlock(
-        file
+        photo
     ) {
-
-        const number =
-            getPhotoNumber(
-                file.name
-            );
-
 
         const block =
             document.createElement(
@@ -1189,22 +1458,28 @@
             "photo-block";
 
 
+        const formattedDate =
+            formatPhotoDate(
+                photo.date
+            );
+
+
         block.innerHTML = `
 
             <img
-                src="${file.download_url}"
-                alt="Subaru Impreza WRX STI photo ${number}"
+                src="${photo.file.download_url}"
+                alt="Subaru Impreza WRX STI photo ${photo.number}"
                 loading="lazy"
             >
 
             <div class="photo-meta">
 
                 <div class="photo-number">
-                    Photo ${number}
+                    Photo ${photo.number}
                 </div>
 
                 <div class="photo-date">
-                    Reading photo date…
+                    ${formattedDate}
                 </div>
 
             </div>
@@ -1223,37 +1498,8 @@
             () => {
 
                 showLightbox(
-                    file.download_url
+                    photo.file.download_url
                 );
-
-            }
-        );
-
-
-        const dateElement =
-            block.querySelector(
-                ".photo-date"
-            );
-
-
-        getPhotoDate(
-            file.download_url
-        ).then(
-            date => {
-
-                if (date) {
-
-                    dateElement.textContent =
-                        date;
-
-                }
-
-                else {
-
-                    dateElement.textContent =
-                        "";
-
-                }
 
             }
         );
@@ -1323,6 +1569,76 @@
 
 
     /* =========================
+       CREATE YEAR SECTION
+    ========================= */
+
+    function createYearSection(
+        title
+    ) {
+
+        const section =
+            document.createElement(
+                "div"
+            );
+
+
+        section.className =
+            "year-section";
+
+
+        const heading =
+            document.createElement(
+                "div"
+            );
+
+
+        heading.className =
+            "year-header";
+
+
+        heading.innerHTML = `
+
+            <h3>
+                ${title}
+            </h3>
+
+            <div class="year-line"></div>
+
+        `;
+
+
+        const grid =
+            document.createElement(
+                "div"
+            );
+
+
+        grid.className =
+            "gallery";
+
+
+        section.appendChild(
+            heading
+        );
+
+
+        section.appendChild(
+            grid
+        );
+
+
+        return {
+
+            section,
+            grid
+
+        };
+
+    }
+
+
+
+    /* =========================
        LOAD GALLERY
     ========================= */
 
@@ -1340,9 +1656,7 @@
                 );
 
 
-            if (
-                !response.ok
-            ) {
+            if (!response.ok) {
 
                 throw new Error(
                     "GitHub API error"
@@ -1379,72 +1693,73 @@
 
 
 
+            const photos =
+                await Promise.all(
+
+                    imageFiles.map(
+                        file =>
+                            getPhotoInfo(
+                                file
+                            )
+                    )
+
+                );
+
+
+
             gallery.innerHTML =
                 "";
 
 
 
-            imageFiles.forEach(
-                file => {
+            /* =========================
+               GROUP PHOTOS
+            ========================= */
 
-                    const number =
-                        getPhotoNumber(
-                            file.name
-                        );
-
-
-                    const block =
-                        createPhotoBlock(
-                            file
-                        );
+            const yearGroups =
+                {};
 
 
-                    gallery.appendChild(
-                        block
-                    );
+            const unknownPhotos =
+                [];
 
 
 
-                    /* =====================
-                       VIDEO AFTER PHOTO 63
-                    ===================== */
+            photos.forEach(
+                photo => {
 
                     if (
-                        number === 63
+                        photo.year &&
+                        photo.year > 1990 &&
+                        photo.year <=
+                            new Date().getFullYear()
                     ) {
 
-                        gallery.appendChild(
+                        if (
+                            !yearGroups[
+                                photo.year
+                            ]
+                        ) {
 
-                            createVideoBlock(
-                                [
-                                    "08nICO99Now"
-                                ]
-                            )
+                            yearGroups[
+                                photo.year
+                            ] = [];
 
+                        }
+
+
+                        yearGroups[
+                            photo.year
+                        ].push(
+                            photo
                         );
 
                     }
 
+                    else {
 
-
-                    /* =====================
-                       VIDEOS AFTER PHOTO 110
-                    ===================== */
-
-                    if (
-                        number === 110
-                    ) {
-
-                        gallery.appendChild(
-
-                            createVideoBlock(
-                                [
-                                    "8DQ7n9tfhmw",
-                                    "rtCwo5VI-5Q",
-                                    "DFUTlWavHxA"
-                                ]
-                            )
-
+                        unknownPhotos.push(
+                            photo
                         );
 
                     }
@@ -1453,8 +1768,183 @@
             );
 
 
+
+            const years =
+                Object.keys(
+                    yearGroups
+                )
+
+                .map(
+                    Number
+                )
+
+                .sort(
+                    (a, b) =>
+                        a - b
+                );
+
+
+
+            /* =========================
+               DRAW YEAR GROUPS
+            ========================= */
+
+            years.forEach(
+                year => {
+
+                    const {
+                        section,
+                        grid
+                    } =
+                        createYearSection(
+                            year
+                        );
+
+
+                    yearGroups[
+                        year
+                    ].forEach(
+                        photo => {
+
+                            grid.appendChild(
+                                createPhotoBlock(
+                                    photo
+                                )
+                            );
+
+
+
+                            /* VIDEO AFTER PHOTO 63 */
+
+                            if (
+                                photo.number === 63
+                            ) {
+
+                                grid.appendChild(
+
+                                    createVideoBlock(
+                                        [
+                                            "08nICO99Now"
+                                        ]
+                                    )
+
+                                );
+
+                            }
+
+
+
+                            /* VIDEOS AFTER PHOTO 110 */
+
+                            if (
+                                photo.number === 110
+                            ) {
+
+                                grid.appendChild(
+
+                                    createVideoBlock(
+                                        [
+                                            "8DQ7n9tfhmw",
+                                            "rtCwo5VI-5Q",
+                                            "DFUTlWavHxA"
+                                        ]
+                                    )
+
+                                );
+
+                            }
+
+                        }
+                    );
+
+
+                    gallery.appendChild(
+                        section
+                    );
+
+                }
+            );
+
+
+
+            /* =========================
+               UNKNOWN DATES
+            ========================= */
+
             if (
-                imageFiles.length === 0
+                unknownPhotos.length
+            ) {
+
+                const {
+                    section,
+                    grid
+                } =
+                    createYearSection(
+                        "OTHER PHOTOS"
+                    );
+
+
+                unknownPhotos.forEach(
+                    photo => {
+
+                        grid.appendChild(
+                            createPhotoBlock(
+                                photo
+                            )
+                        );
+
+
+
+                        if (
+                            photo.number === 63
+                        ) {
+
+                            grid.appendChild(
+
+                                createVideoBlock(
+                                    [
+                                        "08nICO99Now"
+                                    ]
+                                )
+
+                            );
+
+                        }
+
+
+
+                        if (
+                            photo.number === 110
+                        ) {
+
+                            grid.appendChild(
+
+                                createVideoBlock(
+                                    [
+                                        "8DQ7n9tfhmw",
+                                        "rtCwo5VI-5Q",
+                                        "DFUTlWavHxA"
+                                    ]
+                                )
+
+                            );
+
+                        }
+
+                    }
+                );
+
+
+                gallery.appendChild(
+                    section
+                );
+
+            }
+
+
+
+            if (
+                photos.length === 0
             ) {
 
                 gallery.innerHTML =
@@ -1566,7 +2056,7 @@
 
 
     /* =========================
-       FOOTER YEAR
+       FOOTER
     ========================= */
 
     document.getElementById(
