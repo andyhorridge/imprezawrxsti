@@ -1,288 +1,1589 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Impreza WRX STI Gallery</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      background-color: #0b1f3a;
-      color: #f1f1f1;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #1a3b72;
-      text-align: center;
-      padding: 1em 0;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    .hero-img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      border-bottom: 5px solid #ffd700;
-      border-radius: 0 0 12px 12px;
-    }
-    .video-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      padding: 2em 1em 0;
-    }
-    .video-row iframe {
-      width: 300px;
-      height: 533px;
-      border-radius: 8px;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2em 1em;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2em;
-    }
-    .photo-block {
-      text-align: center;
-    }
-    .photo-block img {
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-    .photo-block iframe {
-      width: 300px;
-      height: 533px;
-      border-radius: 8px;
-      display: block;
-      margin: 0 auto 2em;
-    }
-    .photo-block img:hover {
-      transform: scale(1.02);
-    }
-    footer {
-      text-align: center;
-      padding: 2em 0;
-      font-size: 0.9em;
-      color: #aaa;
-    }
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-    }
-    .lightbox:target {
-      display: flex;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 2em;
-      color: white;
-      text-decoration: none;
-    }
-  </style>
+    <meta charset="UTF-8">
 
-  <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "ce9597839c85400db7765bc3e09fe345"}'>
-  </script>
-  <!-- End Cloudflare Web Analytics -->
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#05070b"
+    >
+
+    <title>Andy's Subaru Impreza WRX STI</title>
+
+    <meta
+        name="description"
+        content="Andy's Subaru Impreza WRX STI JDM - photos, videos and history."
+    >
+
+    <!-- EXIF reader -->
+    <script src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"></script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: #05070b;
+            color: #f5f5f5;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+
+            background: rgba(5, 7, 11, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+
+        nav {
+            max-width: 1300px;
+            margin: auto;
+
+            height: 72px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 24px;
+        }
+
+
+        .logo {
+            font-size: 21px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+
+        .logo span {
+            color: #ffd400;
+        }
+
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+
+            transition: 0.2s;
+        }
+
+
+        .nav-links a:hover {
+            color: #ffd400;
+        }
+
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: flex-end;
+
+            overflow: hidden;
+        }
+
+
+        .hero-image {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+        .hero-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.10) 20%,
+                    rgba(0,0,0,0.35) 55%,
+                    rgba(5,7,11,0.96) 100%
+                );
+        }
+
+
+        .hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1300px;
+
+            margin: auto;
+
+            padding:
+                0 24px
+                90px;
+        }
+
+
+        .hero-small {
+            color: #ffd400;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .hero h1 {
+            margin: 0;
+
+            max-width: 850px;
+
+            font-size: clamp(45px, 8vw, 95px);
+            line-height: 0.92;
+
+            letter-spacing: -4px;
+
+            font-weight: 900;
+        }
+
+
+        .hero-subtitle {
+            margin-top: 22px;
+
+            color: #d5d5d5;
+
+            font-size: 19px;
+            letter-spacing: 1px;
+        }
+
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            scroll-margin-top: 90px;
+        }
+
+
+        .section {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 100px 24px;
+        }
+
+
+        .section-title-small {
+            color: #ffd400;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .section h2 {
+            margin: 0 0 22px;
+
+            font-size: clamp(34px, 5vw, 60px);
+
+            letter-spacing: -2px;
+
+            font-weight: 850;
+        }
+
+
+        .section-intro {
+            color: #aaa;
+
+            max-width: 720px;
+
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+
+        /* =========================
+           CAR DETAILS
+        ========================= */
+
+        .car-details {
+            background: #090c12;
+        }
+
+
+        .spec-grid {
+            margin-top: 55px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(190px, 1fr));
+
+            gap: 1px;
+
+            background: rgba(255,255,255,0.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 15px;
+
+            overflow: hidden;
+        }
+
+
+        .spec {
+            background: #090c12;
+
+            padding: 30px;
+        }
+
+
+        .spec-label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #777;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .spec-value {
+            font-size: 19px;
+            font-weight: 750;
+        }
+
+
+
+        /* =========================
+           VIDEOS
+        ========================= */
+
+        .videos {
+            background: #05070b;
+        }
+
+
+        .video-row {
+            margin-top: 45px;
+
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 25px;
+
+            justify-content: center;
+        }
+
+
+        .video-row iframe,
+        .video-block iframe {
+
+            width: min(100%, 340px);
+
+            height: 604px;
+
+            border: 0;
+
+            border-radius: 16px;
+
+            background: #111;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.35);
+        }
+
+
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery-section {
+            background: #090c12;
+        }
+
+
+        .gallery-info {
+            margin-bottom: 40px;
+
+            color: #888;
+
+            font-size: 14px;
+        }
+
+
+        .gallery {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 22px;
+        }
+
+
+        .photo-block {
+            position: relative;
+
+            background: #10141d;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            min-width: 0;
+        }
+
+
+        .photo-block img {
+            width: 100%;
+
+            aspect-ratio: 4 / 3;
+
+            object-fit: cover;
+
+            display: block;
+
+            cursor: pointer;
+
+            transition:
+                transform .35s ease,
+                opacity .35s ease;
+        }
+
+
+        .photo-block:hover img {
+            transform: scale(1.025);
+        }
+
+
+        .photo-meta {
+            padding: 13px 15px 15px;
+        }
+
+
+        .photo-number {
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 750;
+        }
+
+
+        .photo-date {
+            margin-top: 4px;
+
+            min-height: 17px;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+
+        .video-block {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 15px;
+
+            background: transparent;
+        }
+
+
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 9999;
+
+            background: rgba(0,0,0,0.96);
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+        }
+
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 92vh;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+        }
+
+
+        .lightbox-close {
+            position: absolute;
+
+            right: 25px;
+            top: 15px;
+
+            color: #fff;
+
+            font-size: 42px;
+            line-height: 1;
+
+            cursor: pointer;
+        }
+
+
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            grid-column: 1 / -1;
+
+            text-align: center;
+
+            padding: 80px 20px;
+
+            color: #777;
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            color: #666;
+
+            font-size: 13px;
+        }
+
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                height: 62px;
+
+                padding: 0 16px;
+            }
+
+
+            .logo {
+                font-size: 17px;
+            }
+
+
+            .nav-links {
+                gap: 14px;
+            }
+
+
+            .nav-links a {
+                font-size: 10px;
+                letter-spacing: .7px;
+            }
+
+
+            .nav-links a:nth-child(2) {
+                display: none;
+            }
+
+
+            .hero {
+                min-height: 78vh;
+            }
+
+
+            .hero-content {
+                padding:
+                    0 18px
+                    55px;
+            }
+
+
+            .hero h1 {
+                font-size: 54px;
+                letter-spacing: -3px;
+            }
+
+
+            .hero-subtitle {
+                font-size: 15px;
+            }
+
+
+            .section {
+                padding:
+                    75px 17px;
+            }
+
+
+            .gallery {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+
+                gap: 10px;
+            }
+
+
+            .photo-block {
+                border-radius: 9px;
+            }
+
+
+            .photo-block img {
+                aspect-ratio: 1 / 1;
+            }
+
+
+            .photo-meta {
+                padding: 10px;
+            }
+
+
+            .photo-number {
+                font-size: 11px;
+            }
+
+
+            .photo-date {
+                font-size: 10px;
+            }
+
+
+            .video-block {
+                grid-column: 1 / -1;
+            }
+
+
+            .video-row iframe,
+            .video-block iframe {
+
+                width: 100%;
+
+                max-width: 360px;
+
+                height: 640px;
+            }
+
+        }
+
+    </style>
+
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token":"ce9597839c85400db7765bc3e09fe345"}'>
+    </script>
+
 </head>
+
+
+
 <body>
-  <header>
-    <h1>Impreza WRX STI Gallery</h1>
-    <img src="Impreza.jpg.JPG" alt="Main Subaru WRX STI" class="hero-img">
-  </header>
 
-  <!-- Top YouTube videos (unchanged) -->
-  <div class="video-row">
-    <iframe
-      src="https://www.youtube.com/embed/Wk4os-DN16s"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
 
-    <iframe
-      src="https://www.youtube.com/embed/qJm58D1PV6k"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen>
-    </iframe>
-  </div>
+<!-- =========================
+     HEADER
+========================= -->
 
-  <div class="container" id="gallery"></div>
+<header>
 
-  <div id="lightbox" class="lightbox">
-    <a href="#" class="lightbox-close">&times;</a>
-    <img src="" alt="Full view" id="lightbox-img">
-  </div>
+    <nav>
 
-  <footer>
-    &copy; 2025 Impreza WRX STI Gallery by Andy Horridge
-  </footer>
+        <div class="logo">
+            <span>WRX</span> STI
+        </div>
 
-  <script>
-    const username = 'andyhorridge';
-    const repo = 'imprezawrxsti';
-    const folder = 'photos';
-    const gallery = document.getElementById('gallery');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
+
+        <div class="nav-links">
+
+            <a href="#car">
+                THE CAR
+            </a>
+
+            <a href="#videos">
+                VIDEOS
+            </a>
+
+            <a href="#gallery-section">
+                GALLERY
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <img
+        src="Impreza.jpg.JPG"
+        alt="Subaru Impreza WRX STI"
+        class="hero-image"
+    >
+
+
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            ANDY'S IMPREZA
+        </div>
+
+
+        <h1>
+            SUBARU<br>
+            IMPREZA<br>
+            WRX STI
+        </h1>
+
+
+        <div class="hero-subtitle">
+            JDM • Turbo • AWD
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CAR DETAILS
+========================= -->
+
+<section
+    class="car-details"
+    id="car"
+>
+
+    <div class="section">
+
+        <div class="section-title-small">
+            THE CAR
+        </div>
+
+
+        <h2>
+            WRX STI
+        </h2>
+
+
+        <p class="section-intro">
+            A photographic history of my Subaru Impreza
+            WRX STI, documenting the car through the years
+            with photos and videos.
+        </p>
+
+
+        <div class="spec-grid">
+
+            <div class="spec">
+
+                <span class="spec-label">
+                    MODEL
+                </span>
+
+                <span class="spec-value">
+                    Impreza WRX STI
+                </span>
+
+            </div>
+
+
+            <div class="spec">
+
+                <span class="spec-label">
+                    MARKET
+                </span>
+
+                <span class="spec-value">
+                    JDM
+                </span>
+
+            </div>
+
+
+            <div class="spec">
+
+                <span class="spec-label">
+                    ENGINE
+                </span>
+
+                <span class="spec-value">
+                    2.0 Turbo
+                </span>
+
+            </div>
+
+
+            <div class="spec">
+
+                <span class="spec-label">
+                    DRIVE
+                </span>
+
+                <span class="spec-value">
+                    AWD
+                </span>
+
+            </div>
+
+
+            <div class="spec">
+
+                <span class="spec-label">
+                    TRANSMISSION
+                </span>
+
+                <span class="spec-value">
+                    6-Speed Manual
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     VIDEOS
+========================= -->
+
+<section
+    class="videos"
+    id="videos"
+>
+
+    <div class="section">
+
+        <div class="section-title-small">
+            VIDEO
+        </div>
+
+
+        <h2>
+            On Film
+        </h2>
+
+
+        <div class="video-row">
+
+
+            <iframe
+                src="https://www.youtube.com/embed/Wk4os-DN16s"
+                title="Subaru Impreza WRX STI video"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share
+                "
+                allowfullscreen>
+            </iframe>
+
+
+            <iframe
+                src="https://www.youtube.com/embed/qJm58D1PV6k"
+                title="Subaru Impreza WRX STI video"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share
+                "
+                allowfullscreen>
+            </iframe>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section
+    class="gallery-section"
+    id="gallery-section"
+>
+
+    <div class="section">
+
+        <div class="section-title-small">
+            PHOTO HISTORY
+        </div>
+
+
+        <h2>
+            Gallery
+        </h2>
+
+
+        <p class="gallery-info">
+            Original photo dates are shown automatically
+            where they are still stored inside the image.
+        </p>
+
+
+        <div
+            class="gallery"
+            id="gallery"
+        >
+
+            <div class="loading">
+                Loading gallery…
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LIGHTBOX
+========================= -->
+
+<div
+    id="lightbox"
+    class="lightbox"
+>
+
+    <div
+        class="lightbox-close"
+        onclick="closeLightbox()"
+    >
+        &times;
+    </div>
+
+
+    <img
+        src=""
+        alt="Full view"
+        id="lightbox-img"
+    >
+
+</div>
+
+
+
+<footer>
+
+    &copy;
+    <span id="year"></span>
+    Andy Horridge • Subaru Impreza WRX STI
+
+</footer>
+
+
+
+<script>
+
+    const username = "andyhorridge";
+
+    const repo =
+        "imprezawrxsti";
+
+    const folder =
+        "photos";
+
+
+    const gallery =
+        document.getElementById(
+            "gallery"
+        );
+
+
+    const lightbox =
+        document.getElementById(
+            "lightbox"
+        );
+
+
+    const lightboxImg =
+        document.getElementById(
+            "lightbox-img"
+        );
+
+
+
+    /* =========================
+       PHOTO NUMBER
+    ========================= */
+
+    function getPhotoNumber(
+        filename
+    ) {
+
+        const matches =
+            filename.match(/\d+/g);
+
+        if (!matches) {
+            return 999999;
+        }
+
+        return parseInt(
+            matches[matches.length - 1],
+            10
+        );
+
+    }
+
+
+
+    /* =========================
+       DATE FORMAT
+    ========================= */
+
+    function formatPhotoDate(
+        date
+    ) {
+
+        if (!date) {
+            return "";
+        }
+
+
+        const parsed =
+            date instanceof Date
+                ? date
+                : new Date(date);
+
+
+        if (
+            Number.isNaN(
+                parsed.getTime()
+            )
+        ) {
+            return "";
+        }
+
+
+        return parsed.toLocaleDateString(
+            "en-GB",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+    }
+
+
+
+    /* =========================
+       READ EXIF DATE
+    ========================= */
+
+    async function getPhotoDate(
+        imageUrl
+    ) {
+
+        try {
+
+            const exif =
+                await exifr.parse(
+                    imageUrl,
+                    [
+                        "DateTimeOriginal",
+                        "CreateDate",
+                        "ModifyDate"
+                    ]
+                );
+
+
+            if (!exif) {
+                return "";
+            }
+
+
+            const date =
+                exif.DateTimeOriginal ||
+                exif.CreateDate ||
+                exif.ModifyDate;
+
+
+            return formatPhotoDate(
+                date
+            );
+
+        }
+
+        catch (error) {
+
+            console.log(
+                "No EXIF date:",
+                imageUrl
+            );
+
+            return "";
+
+        }
+
+    }
+
+
+
+    /* =========================
+       CREATE PHOTO
+    ========================= */
+
+    function createPhotoBlock(
+        file
+    ) {
+
+        const number =
+            getPhotoNumber(
+                file.name
+            );
+
+
+        const block =
+            document.createElement(
+                "div"
+            );
+
+
+        block.className =
+            "photo-block";
+
+
+        block.innerHTML = `
+
+            <img
+                src="${file.download_url}"
+                alt="Subaru Impreza WRX STI photo ${number}"
+                loading="lazy"
+            >
+
+            <div class="photo-meta">
+
+                <div class="photo-number">
+                    Photo ${number}
+                </div>
+
+                <div class="photo-date">
+                    Reading photo date…
+                </div>
+
+            </div>
+
+        `;
+
+
+        const image =
+            block.querySelector(
+                "img"
+            );
+
+
+        image.addEventListener(
+            "click",
+            () => {
+
+                showLightbox(
+                    file.download_url
+                );
+
+            }
+        );
+
+
+        const dateElement =
+            block.querySelector(
+                ".photo-date"
+            );
+
+
+        getPhotoDate(
+            file.download_url
+        ).then(
+            date => {
+
+                if (date) {
+
+                    dateElement.textContent =
+                        date;
+
+                }
+
+                else {
+
+                    dateElement.textContent =
+                        "";
+
+                }
+
+            }
+        );
+
+
+        return block;
+
+    }
+
+
+
+    /* =========================
+       VIDEO BLOCK
+    ========================= */
+
+    function createVideoBlock(
+        videoIds
+    ) {
+
+        const block =
+            document.createElement(
+                "div"
+            );
+
+
+        block.className =
+            "photo-block video-block";
+
+
+        videoIds.forEach(
+            videoId => {
+
+                const iframe =
+                    document.createElement(
+                        "iframe"
+                    );
+
+
+                iframe.src =
+                    `https://www.youtube.com/embed/${videoId}`;
+
+
+                iframe.title =
+                    "Subaru Impreza WRX STI video";
+
+
+                iframe.allow =
+                    "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+
+                iframe.allowFullscreen =
+                    true;
+
+
+                block.appendChild(
+                    iframe
+                );
+
+            }
+        );
+
+
+        return block;
+
+    }
+
+
+
+    /* =========================
+       LOAD GALLERY
+    ========================= */
 
     async function loadImages() {
-      const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${folder}`;
-      try {
-        const res = await fetch(apiUrl);
-        const files = await res.json();
 
-        const imageFiles = files
-          .filter(f => /\.(jpe?g|png)$/i.test(f.name))
-          .sort((a, b) => a.name.localeCompare(b.name, undefined, {
-            numeric: true,
-            sensitivity: 'base'
-          }));
+        const apiUrl =
+            `https://api.github.com/repos/${username}/${repo}/contents/${folder}`;
 
-        let videoInserted63 = false;
-        let videoInserted110 = false;
 
-        imageFiles.forEach((file) => {
-          const block = document.createElement('div');
-          block.className = 'photo-block';
-          block.innerHTML = `<img src="${file.download_url}" alt="${file.name}" onclick="showLightbox('${file.download_url}')">`;
-          gallery.appendChild(block);
+        try {
 
-          // Existing video after photo63
-          if (!videoInserted63 && /63/i.test(file.name)) {
-            const videoBlock = document.createElement('div');
-            videoBlock.className = 'photo-block';
-            videoBlock.innerHTML = `
-              <iframe
-                src="https://www.youtube.com/embed/08nICO99Now"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            `;
-            gallery.appendChild(videoBlock);
-            videoInserted63 = true;
-          }
+            const response =
+                await fetch(
+                    apiUrl
+                );
 
-          // Two videos after photo110
-          if (!videoInserted110 && /110/i.test(file.name)) {
-            const videoBlock110 = document.createElement('div');
-            videoBlock110.className = 'photo-block';
-            videoBlock110.innerHTML = `
-              <iframe
-                src="https://www.youtube.com/embed/8DQ7n9tfhmw"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
 
-              <iframe
-                src="https://www.youtube.com/embed/rtCwo5VI-5Q"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
+            if (
+                !response.ok
+            ) {
 
-              <iframe
-                src="https://www.youtube.com/embed/DFUTlWavHxA"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-              </iframe>
-            `;
-            gallery.appendChild(videoBlock110);
-            videoInserted110 = true;
-          }
-        });
+                throw new Error(
+                    "GitHub API error"
+                );
 
-        // Fallback for video after photo63
-        if (!videoInserted63 && imageFiles.length >= 63) {
-          const videoBlock = document.createElement('div');
-          videoBlock.className = 'photo-block';
-          videoBlock.innerHTML = `
-            <iframe
-              src="https://www.youtube.com/embed/08nICO99Now"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          `;
-          gallery.insertBefore(videoBlock, gallery.children[63].nextSibling);
+            }
+
+
+            const files =
+                await response.json();
+
+
+
+            const imageFiles =
+                files
+
+                    .filter(
+                        file =>
+                            /\.(jpe?g|png)$/i.test(
+                                file.name
+                            )
+                    )
+
+                    .sort(
+                        (a, b) =>
+                            getPhotoNumber(
+                                a.name
+                            )
+                            -
+                            getPhotoNumber(
+                                b.name
+                            )
+                    );
+
+
+
+            gallery.innerHTML =
+                "";
+
+
+
+            imageFiles.forEach(
+                file => {
+
+                    const number =
+                        getPhotoNumber(
+                            file.name
+                        );
+
+
+                    const block =
+                        createPhotoBlock(
+                            file
+                        );
+
+
+                    gallery.appendChild(
+                        block
+                    );
+
+
+
+                    /* =====================
+                       VIDEO AFTER PHOTO 63
+                    ===================== */
+
+                    if (
+                        number === 63
+                    ) {
+
+                        gallery.appendChild(
+
+                            createVideoBlock(
+                                [
+                                    "08nICO99Now"
+                                ]
+                            )
+
+                        );
+
+                    }
+
+
+
+                    /* =====================
+                       VIDEOS AFTER PHOTO 110
+                    ===================== */
+
+                    if (
+                        number === 110
+                    ) {
+
+                        gallery.appendChild(
+
+                            createVideoBlock(
+                                [
+                                    "8DQ7n9tfhmw",
+                                    "rtCwo5VI-5Q",
+                                    "DFUTlWavHxA"
+                                ]
+                            )
+
+                        );
+
+                    }
+
+                }
+            );
+
+
+            if (
+                imageFiles.length === 0
+            ) {
+
+                gallery.innerHTML =
+                    `
+                    <div class="loading">
+                        No photographs found.
+                    </div>
+                    `;
+
+            }
+
         }
 
-        // Fallback for two videos after photo110
-        if (!videoInserted110 && imageFiles.length >= 110) {
-          const videoBlock110 = document.createElement('div');
-          videoBlock110.className = 'photo-block';
-          videoBlock110.innerHTML = `
-            <iframe
-              src="https://www.youtube.com/embed/rtCwo5VI-5Q"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+        catch (error) {
 
-            <iframe
-              src="https://www.youtube.com/embed/8DQ7n9tfhmw"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          `;
-          gallery.insertBefore(videoBlock110, gallery.children[110].nextSibling);
+            console.error(
+                error
+            );
+
+
+            gallery.innerHTML =
+                `
+                <div class="loading">
+                    Unable to load images.
+                    Make sure the GitHub repository
+                    and photos folder are public.
+                </div>
+                `;
+
         }
-      } catch (err) {
-        gallery.innerHTML = '<p>Unable to load images. Make sure your repo is public.</p>';
-        console.error(err);
-      }
+
     }
 
-    function showLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.style.display = 'flex';
+
+
+    /* =========================
+       LIGHTBOX
+    ========================= */
+
+    function showLightbox(
+        src
+    ) {
+
+        lightboxImg.src =
+            src;
+
+
+        lightbox.style.display =
+            "flex";
+
+
+        document.body.style.overflow =
+            "hidden";
+
     }
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
+
+
+    function closeLightbox() {
+
+        lightbox.style.display =
+            "none";
+
+
+        lightboxImg.src =
+            "";
+
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+
+    lightbox.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target === lightbox ||
+                event.target === lightboxImg
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       FOOTER YEAR
+    ========================= */
+
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
+
+
+
+    /* =========================
+       START
+    ========================= */
 
     loadImages();
-  </script>
+
+</script>
+
+
 </body>
 </html>
