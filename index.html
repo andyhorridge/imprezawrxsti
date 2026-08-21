@@ -871,12 +871,15 @@
 
 
         /* =========================
-           GALLERY VIDEO TILE
+           PHOTO HISTORY VIDEO TILES
+           SAME SIZE AS PHOTOS
         ========================= */
 
         .video-block {
 
-            background: #10141d;
+            aspect-ratio: 4 / 3;
+
+            background: #000;
 
             display: flex;
 
@@ -896,9 +899,7 @@
 
             width: 100%;
 
-            aspect-ratio: 9 / 16;
-
-            height: auto;
+            height: 100%;
 
             border: 0;
 
@@ -1159,6 +1160,12 @@
             }
 
 
+            .video-block {
+
+                aspect-ratio: 1 / 1;
+            }
+
+
             .photo-meta {
 
                 padding:
@@ -1175,12 +1182,6 @@
             .year-header h3 {
 
                 font-size: 29px;
-            }
-
-
-            .video-block iframe {
-
-                aspect-ratio: 9 / 16;
             }
 
 
@@ -1504,8 +1505,10 @@
         </div>
 
 
-        <p class="section-intro"
-           style="margin-top:35px;">
+        <p
+            class="section-intro"
+            style="margin-top:35px;"
+        >
 
             Professionally mapped and dyno tested,
             producing 411 bhp at 6,282 rpm and
@@ -1546,8 +1549,6 @@
 
         <div class="spec-card-grid">
 
-
-            <!-- ENGINE -->
 
             <div class="spec-card">
 
@@ -1616,8 +1617,6 @@
 
 
 
-            <!-- EXHAUST -->
-
             <div class="spec-card">
 
                 <h3>
@@ -1655,8 +1654,6 @@
             </div>
 
 
-
-            <!-- DRIVETRAIN -->
 
             <div class="spec-card">
 
@@ -1699,8 +1696,6 @@
             </div>
 
 
-
-            <!-- SUSPENSION -->
 
             <div class="spec-card">
 
@@ -1745,8 +1740,6 @@
 
 
 
-            <!-- WHEELS -->
-
             <div class="spec-card">
 
                 <h3>
@@ -1784,8 +1777,6 @@
             </div>
 
 
-
-            <!-- INTERIOR -->
 
             <div class="spec-card">
 
