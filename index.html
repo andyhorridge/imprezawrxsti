@@ -115,7 +115,9 @@
     >
 
 
-    <!-- EXIF reader -->
+    <!-- =========================
+         EXIF READER
+    ========================= -->
 
     <script
         src="https://cdn.jsdelivr.net/npm/exifr/dist/lite.umd.js"
@@ -190,8 +192,7 @@
 
             margin: auto;
 
-            padding:
-                0 24px;
+            padding: 0 24px;
 
             display: flex;
 
@@ -293,17 +294,11 @@
             inset: 0;
 
             background:
-
                 linear-gradient(
-
                     to bottom,
-
                     rgba(0,0,0,0.05) 20%,
-
                     rgba(0,0,0,0.28) 55%,
-
                     rgba(5,7,11,0.97) 100%
-
                 );
         }
 
@@ -320,8 +315,7 @@
 
             margin: auto;
 
-            padding:
-                0 24px 90px;
+            padding: 0 24px 90px;
         }
 
 
@@ -379,8 +373,7 @@
 
             margin: auto;
 
-            padding:
-                32px 24px;
+            padding: 32px 24px;
 
             display: grid;
 
@@ -398,8 +391,7 @@
 
             text-align: center;
 
-            padding:
-                22px 10px;
+            padding: 22px 10px;
 
             background: #090c12;
         }
@@ -448,8 +440,7 @@
 
             margin: auto;
 
-            padding:
-                100px 24px;
+            padding: 100px 24px;
         }
 
 
@@ -475,8 +466,7 @@
 
         .section h2 {
 
-            margin:
-                0 0 22px;
+            margin: 0 0 22px;
 
             font-size:
                 clamp(
@@ -612,8 +602,7 @@
 
         .spec-card h3 {
 
-            margin:
-                0 0 18px;
+            margin: 0 0 18px;
 
             font-size: 21px;
         }
@@ -682,8 +671,7 @@
 
         .history-card h3 {
 
-            margin:
-                0 0 10px;
+            margin: 0 0 10px;
 
             font-size: 16px;
         }
@@ -854,8 +842,7 @@
 
         .photo-meta {
 
-            padding:
-                10px 15px 13px;
+            padding: 10px 15px 13px;
         }
 
 
@@ -864,6 +851,75 @@
             color: #888;
 
             font-size: 12px;
+        }
+
+
+
+        /* =========================
+           DRY ICE GALLERY HEADING
+        ========================= */
+
+        .gallery-event-heading {
+
+            grid-column: 1 / -1;
+
+            margin:
+                35px 0 2px;
+
+            padding:
+                26px 0 5px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.10);
+        }
+
+
+        .gallery-event-heading span {
+
+            display: block;
+
+            color: #ffd400;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 2.5px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .gallery-event-heading h4 {
+
+            margin: 0;
+
+            color: #fff;
+
+            font-size:
+                clamp(
+                    25px,
+                    4vw,
+                    35px
+                );
+
+            letter-spacing: -1px;
+        }
+
+
+        .gallery-event-heading p {
+
+            max-width: 760px;
+
+            margin:
+                10px 0 0;
+
+            color: #888;
+
+            font-size: 14px;
+
+            line-height: 1.6;
         }
 
 
@@ -970,8 +1026,7 @@
 
             text-align: center;
 
-            padding:
-                80px 20px;
+            padding: 80px 20px;
 
             color: #777;
         }
@@ -990,8 +1045,7 @@
 
             text-align: center;
 
-            padding:
-                45px 20px;
+            padding: 45px 20px;
 
             color: #666;
 
@@ -1048,8 +1102,7 @@
 
                 height: 62px;
 
-                padding:
-                    0 15px;
+                padding: 0 15px;
             }
 
 
@@ -1089,8 +1142,7 @@
 
             .hero-content {
 
-                padding:
-                    0 18px 55px;
+                padding: 0 18px 55px;
             }
 
 
@@ -1110,8 +1162,7 @@
 
             .section {
 
-                padding:
-                    75px 17px;
+                padding: 75px 17px;
             }
 
 
@@ -1158,6 +1209,20 @@
             }
 
 
+            .gallery-event-heading {
+
+                margin-top: 20px;
+
+                padding-top: 20px;
+            }
+
+
+            .gallery-event-heading p {
+
+                font-size: 12px;
+            }
+
+
             .video-block iframe {
 
                 aspect-ratio: 1 / 1;
@@ -1178,7 +1243,9 @@
     </style>
 
 
-    <!-- Cloudflare Web Analytics -->
+    <!-- =========================
+         CLOUDFLARE WEB ANALYTICS
+    ========================= -->
 
     <script
         defer
@@ -1530,6 +1597,8 @@
         <div class="spec-card-grid">
 
 
+            <!-- ENGINE & TURBO -->
+
             <div class="spec-card">
 
                 <h3>
@@ -1557,6 +1626,8 @@
             </div>
 
 
+            <!-- EXHAUST -->
+
             <div class="spec-card">
 
                 <h3>
@@ -1576,6 +1647,8 @@
 
             </div>
 
+
+            <!-- TRANSMISSION -->
 
             <div class="spec-card">
 
@@ -1597,6 +1670,8 @@
 
             </div>
 
+
+            <!-- SUSPENSION -->
 
             <div class="spec-card">
 
@@ -1620,6 +1695,8 @@
             </div>
 
 
+            <!-- BRAKES -->
+
             <div class="spec-card">
 
                 <h3>
@@ -1640,6 +1717,8 @@
             </div>
 
 
+            <!-- WHEELS -->
+
             <div class="spec-card">
 
                 <h3>
@@ -1659,6 +1738,8 @@
 
             </div>
 
+
+            <!-- INTERIOR -->
 
             <div class="spec-card">
 
@@ -1982,7 +2063,7 @@
 
 
 <!-- =========================
-     FOR SALE ADVERT
+     ORIGINAL FOR SALE ADVERT
 ========================= -->
 
 <section
@@ -2007,7 +2088,7 @@
 
             <iframe
                 src="https://www.youtube.com/embed/Wk4os-DN16s"
-                title="Subaru Impreza WRX STI for sale advert"
+                title="Subaru Impreza WRX STI original for sale advert"
                 allow="
                     accelerometer;
                     autoplay;
@@ -2023,7 +2104,7 @@
 
             <iframe
                 src="https://www.youtube.com/embed/qJm58D1PV6k"
-                title="Subaru Impreza WRX STI for sale advert"
+                title="Subaru Impreza WRX STI original for sale advert"
                 allow="
                     accelerometer;
                     autoplay;
@@ -2127,6 +2208,10 @@
 <script>
 
 
+    /* =========================
+       GITHUB GALLERY SETTINGS
+    ========================= */
+
     const username =
         "andyhorridge";
 
@@ -2158,6 +2243,10 @@
 
 
 
+    /* =========================
+       GET PHOTO NUMBER
+    ========================= */
+
     function getPhotoNumber(
         filename
     ) {
@@ -2188,6 +2277,10 @@
     }
 
 
+
+    /* =========================
+       FORMAT EXIF DATE
+    ========================= */
 
     function formatPhotoDate(
         date
@@ -2244,6 +2337,10 @@
     }
 
 
+
+    /* =========================
+       READ PHOTO INFORMATION
+    ========================= */
 
     async function getPhotoInfo(
         file
@@ -2353,6 +2450,10 @@
 
 
 
+    /* =========================
+       CREATE PHOTO
+    ========================= */
+
     function createPhotoBlock(
         photo
     ) {
@@ -2441,6 +2542,10 @@
 
 
 
+    /* =========================
+       CREATE VIDEO TILE
+    ========================= */
+
     function createVideoBlock(
         videoId
     ) {
@@ -2488,10 +2593,78 @@
 
 
 
+    /* =========================
+       DRY ICE SECTION HEADING
+       BEFORE PHOTO 135
+    ========================= */
+
+    function createDryIceHeading() {
+
+        const heading =
+            document.createElement(
+                "div"
+            );
+
+
+        heading.className =
+            "gallery-event-heading";
+
+
+        heading.innerHTML = `
+
+            <span>
+                PRESERVATION
+            </span>
+
+            <h4>
+                Dry-Ice Cleaning & Preservation
+            </h4>
+
+            <p>
+                Detailed photographs of the underside,
+                wheel arches, suspension and running gear
+                following specialist dry-ice cleaning and
+                preservation treatment.
+            </p>
+
+        `;
+
+
+        return heading;
+
+    }
+
+
+
+    /* =========================
+       ADD PHOTOS + FIXED VIDEOS
+    ========================= */
+
     function addPhotoToGrid(
         grid,
         photo
     ) {
+
+
+        /*
+           PHOTO 135 STARTS THE
+           DRY-ICE PHOTO DOCUMENTATION
+        */
+
+        if (
+            photo.number === 135
+        ) {
+
+            grid.appendChild(
+                createDryIceHeading()
+            );
+
+        }
+
+
+        /*
+           ADD THE PHOTO
+        */
 
         grid.appendChild(
 
@@ -2502,7 +2675,11 @@
         );
 
 
-        /* VIDEO AFTER PHOTO 63 */
+
+        /*
+           EXISTING VIDEO
+           AFTER PHOTO 63
+        */
 
         if (
             photo.number === 63
@@ -2519,8 +2696,15 @@
         }
 
 
-        /* THREE VIDEOS AFTER PHOTO 110
-           LEFT TO RIGHT IN GRID */
+
+        /*
+           EXISTING THREE VIDEOS
+           AFTER PHOTO 110
+
+           THESE REMAIN AS THREE
+           SEPARATE GRID ITEMS SO
+           THEY RUN LEFT TO RIGHT
+        */
 
         if (
             photo.number === 110
@@ -2557,6 +2741,10 @@
     }
 
 
+
+    /* =========================
+       CREATE YEAR SECTION
+    ========================= */
 
     function createYearSection(
         title
@@ -2637,6 +2825,10 @@
 
 
 
+    /* =========================
+       LOAD GITHUB PHOTOS
+    ========================= */
+
     async function loadImages() {
 
         const apiUrl =
@@ -2665,6 +2857,11 @@
             const files =
                 await response.json();
 
+
+            /*
+               AUTOMATICALLY FIND
+               ALL NUMBERED PHOTOS
+            */
 
             const imageFiles =
 
@@ -2697,6 +2894,10 @@
                     );
 
 
+            /*
+               READ EXIF DATES
+            */
+
             const photos =
 
                 await Promise.all(
@@ -2724,6 +2925,10 @@
             const unknownPhotos =
                 [];
 
+
+            /*
+               GROUP PHOTOS BY YEAR
+            */
 
             photos.forEach(
 
@@ -2793,6 +2998,10 @@
                     );
 
 
+            /*
+               BUILD EACH YEAR
+            */
+
             years.forEach(
 
                 year => {
@@ -2839,6 +3048,12 @@
             );
 
 
+
+            /*
+               PHOTOS WITHOUT
+               RELIABLE EXIF DATES
+            */
+
             if (
                 unknownPhotos.length
             ) {
@@ -2881,6 +3096,11 @@
             }
 
 
+
+            /*
+               EMPTY GALLERY FALLBACK
+            */
+
             if (
                 photos.length === 0
             ) {
@@ -2922,6 +3142,10 @@
 
 
 
+    /* =========================
+       LIGHTBOX
+    ========================= */
+
     function showLightbox(
         src
     ) {
@@ -2940,6 +3164,7 @@
     }
 
 
+
     function closeLightbox() {
 
         lightbox.style.display =
@@ -2954,6 +3179,7 @@
             "";
 
     }
+
 
 
     lightbox.addEventListener(
@@ -2981,6 +3207,7 @@
     );
 
 
+
     document.addEventListener(
 
         "keydown",
@@ -3000,6 +3227,11 @@
     );
 
 
+
+    /* =========================
+       FOOTER YEAR
+    ========================= */
+
     document
         .getElementById(
             "year"
@@ -3008,6 +3240,11 @@
             new Date()
                 .getFullYear();
 
+
+
+    /* =========================
+       START GALLERY
+    ========================= */
 
     loadImages();
 
