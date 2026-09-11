@@ -2636,6 +2636,25 @@
 
 
 
+    /* Photos in this upload belong together regardless of EXIF year. */
+    function isAudioUpgradePhoto(photo) {
+        return /^photo(?:14[2-9]|15[0-2])\.jpeg$/i.test(photo.file.name);
+    }
+
+    function createAudioUpgradeHeading() {
+        const heading = document.createElement("div");
+        heading.className = "gallery-event-heading";
+        heading.innerHTML = `
+            <span>IN-CAR AUDIO</span>
+            <h4>Audio Upgrade</h4>
+            <p>Apple CarPlay, new speakers and door soundproofing.
+                Photographs document the original stereo, the audio installation
+                and the sound-deadening treatment behind the door trims.</p>
+        `;
+        return heading;
+    }
+
+
     /* =========================
        ADD PHOTOS + FIXED VIDEOS
     ========================= */
@@ -2918,6 +2937,8 @@
                 "";
 
 
+            const audioPhotos = photos.filter(isAudioUpgradePhoto);
+
             const yearGroups =
                 {};
 
@@ -2933,6 +2954,10 @@
             photos.forEach(
 
                 photo => {
+
+                    if (isAudioUpgradePhoto(photo)) {
+                        return;
+                    }
 
                     if (
 
@@ -3095,6 +3120,18 @@
 
             }
 
+
+
+            // A separate container prevents these photos inheriting Dry Ice's heading.
+            if (audioPhotos.length) {
+                const { section, grid } = createYearSection("");
+                section.id = "audio-upgrade";
+                grid.appendChild(createAudioUpgradeHeading());
+                audioPhotos
+                    .sort((a, b) => a.number - b.number)
+                    .forEach(photo => addPhotoToGrid(grid, photo));
+                gallery.appendChild(section);
+            }
 
 
             /*
